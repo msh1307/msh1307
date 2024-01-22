@@ -24,7 +24,7 @@ menu:
     - identifier: search
       name: Search
       url: /search
-      weight: 50
+      weight: 40
     # - identifier: tags
     #   name: Tags
     #   url: /tags
