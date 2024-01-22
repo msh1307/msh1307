@@ -13,14 +13,6 @@ menu:
       name: Blog
       url: /blog
       weight: 20
-    - identifier: projects
-      name: Projects
-      url: /projects
-      weight: 30
-    - identifier: experience
-      name: Experience
-      url: /experience
-      weight: 40
     - identifier: search
       name: Search
       url: /search
@@ -36,10 +28,10 @@ menu:
 
 params:
   # theme
-  showToc: true
+  showToc: false
   TocOpen: false
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: true
+  ShowCodeCopyButtons: false
   hideMeta: false
 
   # for enchanced SEO
@@ -49,7 +41,7 @@ params:
   profileMode:
     enabled: true
     title: "msh1307"
-    subtitle: 
+    subtitle: Student
     imageUrl: "home/macat.jpeg"
     imageWidth: 280
     imageHeight: auto
@@ -66,16 +58,8 @@ params:
     hiddenInSingle: false # hide on single page
 
   socialIcons:
-    - name: "email"
-      url: "mailto:abdur.rahman.kalim@gmail.com"
-    - name: "linkedin"
-      url: "https://www.linkedin.com/in/abdurrahmankalim"
     - name: "github"
-      url: "https://github.com/arkalim"
-    - name: "youtube"
-      url: "https://www.youtube.com/c/AbdurRahmanKalim"
-    - name: "cv"
-      url: "https://drive.google.com/file/d/1U6Gg2RnHSCthtWLbZJBlAEI3V1WGjZty/view"
+      url: "https://github.com/msh1307"
 
   # text search
   fuseOpts:
