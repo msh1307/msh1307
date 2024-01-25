@@ -21,11 +21,15 @@ menu:
       name: Search
       url: /search
       weight: 40
+    - identifier: tags
+      name: Tags
+      url: /tags
+      weight: 50
 
 
 params:
   # theme
-  showToc: false
+  showToc: true
   TocOpen: false
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: false

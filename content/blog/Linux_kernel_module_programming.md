@@ -3,7 +3,7 @@ title: "Linux kernel module programming"
 description: "리눅스 커널 모듈 프로그래밍"
 dateString: January 2023
 draft: false
-tags: ["kernel module programming", "Linux kernel moudle", "Linux kernel"]
+tags: ["kernel module programming", "Linux kernel module", "Linux kernel"]
 weight: 100
 cover:
     image: "/blog/Linux_kernel_module_programming/image.png"
