@@ -10,10 +10,12 @@ cover:
 ---
 
 # Kernel module?
+---
 모듈은 사용자의 혹은 커널의 요구로 읽혀지거나 아니면 없어지는 코드들로 이루어진 프로그램의 어떤 한 조각을 의미한다. 
 커널은 하나의 큰 모듈들의 집합이라고 볼 수 있다. 
 모듈들을 통해서 필요할때 더 추가, 혹은 제거를 통해서 커널을 재컴파일 혹은 재가동하지 않고도 커널의 기능을 확장하거나 축소시킬 수 있다.
 # lsmod insmod rmmod
+---
 - `lsmod`를 통해서 현재 커널에 있는 모듈들의 정보를 확인할 수 있다. 
 이때 lsmod는 `/proc/modules`를 읽고나서 좀 더 예쁘게 바꿔준다.
 - `insmod`를 통해서 커널에 모듈을 적재할 수 있다.
@@ -21,6 +23,7 @@ cover:
 
 
 # Hello World
+---
 ```c
 /*
 * hello-1.c - The simplest kernel module.
@@ -47,6 +50,7 @@ void cleanup_module(void) {
 
 
 # printk, log level
+---
 printk()는 유저와 통신하기 위한 함수가 아니다.
 이 함수가 호출되면 커널의 logging mechanism이 수행되고, 이 logging mechanism은 수행한 함수의 정보를 기록하거나 경고를 알린다.	
 각각의 printk 선언은 우선순위를 통해서 제공되는데 그 우선순위는 아래와 같다.
@@ -120,11 +124,13 @@ cat /proc/sys/kernel/printk
 `console log level`(여기선 4)보다 심각도가 높으면 콘솔에 출력된다.
 
 # Kbuild
+---
 kbuild system은 리눅스 버젼 2.6.x대에 도입된 새로운 kernel build system이다. 
 kbuild는 모든 복잡성을 숨길수 있는 간단한 하나의 makefile을 제공한다. 
 이 makefile을 사용해서 make로 module을 build 할 수 있다.
 
 ## Goal
+---
 Goal을 정의하는 것은 Kbuild에서 가장 중요한 부분이다.
 Goal은 build 과정을 통해 최종적으로 만들어져야 할 것, 컴파일 옵션, 사용되야하는 하위 디렉토리를 정의한다.
 간단한 kbuild makefile의 일부를 확인해보면 아래와 같다.
@@ -140,6 +146,7 @@ obj-$(CONFIG_FOO) += foo.o
 `$(CONFIG_FOO)`는 `y(built-in)`나 `m(module)`의 값을 갖는다. 
 만약 `CONFIG_FOO`가 y나 m의 값을 갖지 않는다면 이 파일은 컴파일되거나 링크되지 않는다.
 # Kernel Module Compile
+---
 앞에 hello world 예제를 Makefile로 컴파일해보면 아래와 같다.
 ```
 obj-m += hello-1.o
@@ -155,6 +162,7 @@ make로 컴파일을 하면, `.o`가 대체된 `.ko` 확장자를 가진 파일�
 `/var/log/messages`를 살펴보면, hello world 로그가 찍힌 것을 확인할 수 있다.
 
 # Hello World - 2
+---
 init과 cleanup 함수를 재명명할 수 있다.
 이때 `module_init`과 `module_exit` 매크로가 필요하다.
 위 매크로들은 `linux/init.h`에 정의되어 있다.
@@ -180,6 +188,7 @@ module_init(hello_2_init);
 module_exit(hello_2_exit);
 ```
 # Modules VS Programs
+---
 프로그램들은 보통 Main 함수부터 시작된다. 
 하지만 커널 모듈은 항상 `_init_module` 혹은 `module_init` 같은 함수의 호출로 시작된다.
 위와 같은 함수들을 `entry function`이라고 부른다.
@@ -189,6 +198,7 @@ entry function은 모듈의 시작을 의미하는데, 기능적으로 모듈이
 이와 같은 종료 함수는 `entry function`이 수행한 모든 기능들을 수행하기 전으로 되돌린다. 
 
 # Functions available to modules
+---
 일반적으로 프로그램을 작성할때, `printf` 같은 자신이 정의하지 않은 라이브러리 함수를 사용한다.
 이때 `printf` 같은 라이브러리 함수들은 나중에 사용되기 위해서 `linking`을 거치게 된다.
 
@@ -198,6 +208,7 @@ entry function은 모듈의 시작을 의미하는데, 기능적으로 모듈이
 각 symbols의 함수적 정의는 커널이 제공한다.
 이러한 symbol들은 `/proc/kallsyms`에서 확인할 수 있다.
 # User Space VS Kernel Space
+---
 커널은 유저에게 자원에 대한 접근 권한을 부여하지 않는다.
 다음 사진은 인텔 기준으로 총 4개의 ring이 있다.
 OS가 CPU를 사용할때, 사용자가 CPU가 사용할때를 나눠놓았다.
@@ -210,12 +221,14 @@ syscall을 하면, Kernel에 그 syscall에 알맞는 처리를 해주고, 사�
 이때 커널이 superviser mode로 IO를 처리해주고, user mode로 돌아온다.
 printf 함수를 일종의 거대한 wrapper로 볼 수 있다.
 # Name Space
+---
 C 프로그램을 작성할때, 일반적으로 프로그래머는 가독성을 보장하는 변수를 사용한다.
 만약 다른 사람의 전역변수에 해당하는 전역변수명을 재사용한다면, namespace pollution 문제가 생긴다. 
 
 커널에서 아주 작은 모듈이라고 할지라도 작성된 모듈이 커널 전체에 linking 될텐데 위 문제를 고려한다면 이것은 분명히 주목할만한 문제가 된다.
 위 문제점을 피하기 위한 가장 좋은 방법은, 프로그래머만의 잘 정의된 prefix를 사용하고, 모두 static으로 정의하는 것이다. 
 # Code Space
+---
 프로세스가 만들어졌을때, 커널은 가상 메모리를 프로세스에게 할당한다.
 그리고 프로세스를 위해 할당된 메모리 주소는 서로 겹치지 않는다. 
 예를 들어 각각의 프로세스들이 0xbffff978 라는 주소에 접근할때 실제로 접근하는 물리적 메모리의 주소는 다르다.
@@ -227,6 +240,7 @@ C 프로그램을 작성할때, 일반적으로 프로그래머는 가독성을 
 그래서 만약 어떤 모듈이 segfault 같은 에러를 발생시킨다면, kernel panic이 발생하게 된다.
 
 # Device drivers
+---
 드라이버는 모듈의 종류중 하나인데, 하드웨어를 위한 기능을 제공한다.
 리눅스에서 VFS를 지원해서 통일되게 파일들을 다룰 수 있다.
 각각의 하드웨어는 /dev에 위치해있는 파일 이름으로 나타내어질 수 있다.
@@ -239,6 +253,7 @@ application이 파일에 대한 IO를 수행하게 되면, 일반적으로 VFS�
 
 
 ## Major & Minor Numbers
+---
 다음 표는 3개의 IDE hard drive에 대한 정보가 나타나 있다.
 ```
 # ls -l /dev/hda[1-3]
@@ -254,6 +269,7 @@ brw-rw---- 1 root disk 3, 3 Jul 5 2000 /dev/hda3
 
 `minor number`는 같은 드라이버에 의해 컨트롤되는 장치들을 구분하기 위한 용도로 사용된다.
 ## Device files
+---
 장치들은 두가지 타입 : `character device`와 `block device`로 나뉜다. 
 
 block device와 character device의 가장 큰 차이점은 Application의 I/O 요구가 있을 시, 데이터를 File System에서 읽어오느냐 Character Device(Raw device)에서 읽어오느냐의 차이다.
@@ -296,6 +312,7 @@ brw-rw---- 1 root floppy 2, 44 Jul 5 2000 /dev/fd0u1680
 위 예시 때문에 조금 추상적인 상태의 하드웨어라고 언급한 것이다.
 
 # file_operations structure
+---
 `file_operations` 구조체는 `/linux/fs.h`에 정의되어있다.
 구조체의 각각의 부분은 드라이버가 정의한 어떤 함수들의 주소에 대응된다.
 
@@ -351,15 +368,18 @@ struct file_operations fops = {
 ```
 위와 같은 방식으로 사용할 수 있다.
 # file structure
+---
 각각의 디바이스들은 linux/fs.h에 정의된 커널의 file 구조체로 표현될 수 있다.
 하지만 위의 구조체는 커널 수준에서 사용되므로 유저레벨의 사용 환경에선 확인할 수 없다.
 file 구조체의 객체는 보통 flip라고 불린다.
 
 # Registering a Device
+---
 시스템에 드라이버를 설치한다는 것은 커널에 등록을 해야한다는 것을 의미한다. 
 이 말은 모듈의 초기화 동안 major number를 드라이버에 할당한다는 것과 같은 의미이다.
 
 ## register_chrdev()
+---
 register_chrdev 함수를 보면 다음과 같다.
 ```c
 int register_chrdev(unsigned int major, const char *name, struct file_operations *fops);
@@ -375,6 +395,7 @@ minor number는 그냥 device files를 만들때 필요하다.
 `register_chrdev()`대신 요즘엔 `register_chrdev_region`, `alloc_chrdev_region` 들을 써서 minor number도 미리 예약한다. 
 device 파일을 만들려면 major, minor를 다 지정해서 `cdev_init`/`cdev_add` 혹은 `device_create`같은 애들을 사용해서 직접 디바이스 파일을 생성해도된다.
 ## dev_t
+---
 Device descriptor type. 
 major, minor 번호가 조합되어있다.
 ```c
@@ -392,6 +413,7 @@ linux/kdev_t.h에서 정의된 매크로를 확인할 수 있다.
 #define MKDEV(ma,mi)    (((ma) << MINORBITS) | (mi))
 ```
 ## cdev
+---
 커널 내부적으로 char dev 표현할때 쓰는 구조체이다.
 ```c
 /* include/linux/cdev.h */
@@ -405,6 +427,7 @@ struct cdev {
 } __randomize_layout;
 ```
 ## alloc_chrdev_region()
+---
 `alloc_chrdev_region()` 은 동적으로 디바이스 번호 할당해주는 함수이다.
 ```c
 int alloc_chrdev_region(dev_t *dev, unsigned int firstminor, unsigned int count, char* name)
@@ -413,22 +436,26 @@ int alloc_chrdev_region(dev_t *dev, unsigned int firstminor, unsigned int count,
 동적으로 할당해주기 때문에 미리 디바이스 파일을 못 만든다.
 `/proc/devices` 읽고 major number 얻어서 자동으로 등록하는 스크립트를 통해서 해결할 수 있긴 하다.
 ## register_chrdev_region()
+---
 ```c
 int register_chrdev_region(dev_t first, unsigned int count, char *name);
 ```
 `register_chrdev_region()` 함수는 디바이스 번호 알고있으면 쓰는 함수다.
 ## cdev_init()
+---
 ```c
 void cdev_init(struct cdev * cdev, const struct file_operations * fops);
 ```
 cdev_init은 cdev 구조체 초기화 해주는 함수다.
 ## cdev_add()
+---
 ```c
 int cdev_add(struct cdev * p, dev_t dev, unsigned count);
 ```
 cdev_add 함수는 디바이스를 등록해주는 함수다.
 
 ## class_create()
+---
 ```c
 struct class* class_create(struct module* owner, const char* name)
 ```
@@ -436,6 +463,7 @@ struct class* class_create(struct module* owner, const char* name)
 `/sys/class` 에서 클래스를 확인할 수 있다.
 그룹을 나누기 위해 존재하는 것 같다.
 ## device_create()
+---
 ```c
 struct device* device_create(struct class* class, struct device parent, dev_t devt, const char* fmt, …)
 ```
@@ -443,6 +471,7 @@ struct device* device_create(struct class* class, struct device parent, dev_t de
 /dev에 아직 디바이스 파일이 안생겼으니, `device_create` 함수로 디바이스 파일을 생성할 수 있다.
 
 ## THIS_MODULE
+---
 ```c
 #define THIS_MODULE (&__this_module)
 ```
@@ -632,6 +661,7 @@ MODULE_LICENSE("GPL");
 
 
 # Example fops - open
+---
 ```c
 #include <linux/init.h>
 #include <linux/module.h>
@@ -695,6 +725,7 @@ fops 구조체에 .open에 함수 주소를 따로 할당해놓고, device open�
 
 
 # Example fops - open, release, read, write
+---
 ```c
 #include <linux/init.h>
 #include <linux/module.h>
@@ -863,6 +894,7 @@ module_init(chardev_init);
 module_exit(chardev_exit);
 ```
 # IOCTL(input/output control)
+---
 read, write 오퍼레이션을 통한 읽기 쓰기는 가능할지 몰라도, 하드웨어 제어 및 상태 정보 확인은 불가능하다.
 ioctl() 함수쓰면 하드웨어 제어가 가능하고, 상태 정보도 얻을 수 있다.
 
@@ -887,6 +919,7 @@ rw에 대한 정보를 담아서 고유한 ioctl 식별자를 만드는걸 도�
 클라이언트와 드라이버간에 교환되는 바이트 수를 계산하는 데 사용되는 유형 이름이다.
 
 # Example ioctl
+---
 ```c
 #include <linux/init.h>
 #include <linux/module.h>

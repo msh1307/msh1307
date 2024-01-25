@@ -5,17 +5,21 @@ summary: "About"
 showToc: false
 ---
 
-맹서현 / 2006.02.17
+# Profile
+---
+맹서현 
+2006.02.17
 
 ## Education
+---
 - 선린인터넷고등학교 SW 영재원 (2020.04 ~ 2020.11)
 - 선린인터넷고등학교 SW 영재원 (2021.04 ~ 2021.11)
 - 현대오토에버 화이트해커 양성교육 (2022.07 ~ 2022.11)
 - KITRI BoB 12th Vulnerability Analysis (2023.07 ~ )
 
----
 
-## Contests
+## Awards
+---
 - 2nd, 선린 고등해커 페스티벌 2023 (Team 냥코)
 - 2nd, Dreamhack KAPO, KAIST-POSTECH CTF 2023
 - 1st, ABB CTF 2023 (₩1,000,000) (Team 냥코대전쟁)
@@ -35,6 +39,7 @@ showToc: false
 - 4th, Dreamhack Christmas CTF 2022
 - Finalist, Whitehat Contest Junior 2022 
 - Finalist, CCE, Cyber Conflict Exercise Junior 2022
+- 한림장학재단 장학생 선발
 - 창의적 산출물 발표회 금상 2021
 - SW 영재 창작대회 장려상 2021
 - 창의적 산출물 발표회 우수상 2020
