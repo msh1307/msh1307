@@ -5,6 +5,10 @@ theme: PaperMod
 
 menu:
   main:
+    - identifier: about
+      name: About
+      url: /about
+      weight: 30
     - identifier: home
       name: Home
       url: /
@@ -17,14 +21,7 @@ menu:
       name: Search
       url: /search
       weight: 40
-    # - identifier: tags
-    #   name: Tags
-    #   url: /tags
-    #   weight: 60
-    # - identifier: notes
-    #   name: Notes
-    #   url: https://notes.arkalim.org
-    #   weight: 70
+
 
 params:
   # theme
@@ -41,7 +38,7 @@ params:
   profileMode:
     enabled: true
     title: "msh1307"
-    subtitle: Student
+    subtitle: BoB 12th, Sunrin High School 117th, Layer7 22nd 
     imageUrl: "home/macat.jpeg"
     imageWidth: 280
     imageHeight: auto
