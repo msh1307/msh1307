@@ -5,8 +5,8 @@ dateString: January 2023
 draft: false
 tags: ["kernel module programming", "Linux kernel module", "Linux kernel"]
 weight: 100
-cover:
-    image: "/blog/Linux_kernel_module_programming/image.png"
+# cover:
+    # image: ""
 ---
 
 # Kernel module?
