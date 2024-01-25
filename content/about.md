@@ -1,7 +1,7 @@
 ---
-title: "About"
+title: "About me"
 url: "/about"
-summary: "About"
+summary: "About me"
 showToc: false
 ---
 
@@ -38,7 +38,7 @@ showToc: false
 - 4th, Dreamhack Christmas CTF 2022
 - Finalist, Whitehat Contest Junior 2022 
 - Finalist, CCE, Cyber Conflict Exercise Junior 2022
-- 한림장학재단 장학생 선발
+- 한림장학재단 장학생 선발 (₩1,000,000)
 - 창의적 산출물 발표회 금상 2021
 - SW 영재 창작대회 장려상 2021
 - 창의적 산출물 발표회 우수상 2020
