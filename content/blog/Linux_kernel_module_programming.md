@@ -4,7 +4,8 @@ description: "리눅스 커널 모듈 프로그래밍"
 dateString: January 2023
 draft: false
 tags: ["kernel module programming", "Linux kernel module", "Linux kernel"]
-weight: 100
+weight: 30
+date: 2023-01-20
 # cover:
     # image: ""
 ---
