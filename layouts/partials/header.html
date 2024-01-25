@@ -40,6 +40,14 @@
 {{- end }}
 
 <header class="header sticky-header">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BR89V2WEC0"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BR89V2WEC0');
+    </script>
     <nav class="nav">
         <div class="logo">
             {{- $label_text := (site.Params.label.text | default site.Title) }}
