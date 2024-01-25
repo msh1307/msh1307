@@ -9,7 +9,6 @@ cover:
     image: "/blog/Linux_kernel_module_programming/image.png"
 ---
 
-![](/blog/aws-saa-certification/img1.jpg)
 # Kernel module?
 모듈은 사용자의 혹은 커널의 요구로 읽혀지거나 아니면 없어지는 코드들로 이루어진 프로그램의 어떤 한 조각을 의미한다. 
 커널은 하나의 큰 모듈들의 집합이라고 볼 수 있다. 
