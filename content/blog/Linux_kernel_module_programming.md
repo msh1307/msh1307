@@ -1,6 +1,6 @@
 ---
 title: "Linux kernel module programming"
-description: "Linux kernel module programming"
+# description: "Linux kernel module programming"
 dateString: January 2023
 draft: false
 tags: ["kernel module programming", "Linux kernel module", "Linux kernel"]
