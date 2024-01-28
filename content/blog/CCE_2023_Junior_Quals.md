@@ -6,6 +6,7 @@ draft: false
 tags: ["CCE 2023 Junior Quals","CCE 2023"]
 weight: 30
 date: 2023-06-10
+categories: ["CTF"]
 # cover:
     # image: ""
 ---

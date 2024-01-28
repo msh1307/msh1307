@@ -6,6 +6,7 @@ draft: false
 tags: ["TJCTF_2023","TJCTF_2023 Painter"]
 weight: 30
 date: 2023-05-29
+categories: ["CTF"]
 # cover:
     # image: ""
 ---

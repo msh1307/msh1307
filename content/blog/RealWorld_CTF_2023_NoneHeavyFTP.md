@@ -6,6 +6,7 @@ draft: false
 tags: ["RealWorld CTF 2023","RealWorld CTF NoneheavyFTP"]
 weight: 30
 date: 2023-01-07
+categories: ["CTF"]
 # cover:
     # image: ""
 ---

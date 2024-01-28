@@ -6,6 +6,7 @@ draft: false
 tags: ["Kalmar CTF 2023","MJS js engine"]
 weight: 30
 date: 2023-03-13
+categories: ["CTF"]
 # cover:
     # image: ""
 ---

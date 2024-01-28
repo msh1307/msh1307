@@ -3,6 +3,10 @@ languageCode: en-us
 title: msh1307
 theme: PaperMod
 
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
 menu:
   main:
     - identifier: about
@@ -21,6 +25,10 @@ menu:
       name: Search
       url: /search
       weight: 40
+    - identifier: categories
+      name: Categories
+      url: /categories
+      weight: 50
     - identifier: tags
       name: Tags
       url: /tags

@@ -6,6 +6,7 @@ draft: false
 tags: ["Kaist Postech CTF","KAPO CTF"]
 weight: 30
 date: 2023-12-20
+categories: ["CTF"]
 # cover:
     # image: ""
 ---

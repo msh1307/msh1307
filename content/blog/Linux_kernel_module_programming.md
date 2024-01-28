@@ -6,6 +6,7 @@ draft: false
 tags: ["kernel module programming", "Linux kernel module", "Linux kernel"]
 weight: 30
 date: 2023-01-20
+categories: ["Notes"]
 # cover:
     # image: ""
 ---

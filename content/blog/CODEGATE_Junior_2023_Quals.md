@@ -6,6 +6,7 @@ draft: false
 tags: ["CODEGATE 2023 Quals"]
 weight: 30
 date: 2023-06-24
+categories: ["CTF"]
 # cover:
     # image: ""
 ---
