@@ -4,7 +4,7 @@ dateString: January 2024
 draft: false
 tags: ["Raspberry pi"]
 weight: 30
-date: 2024-01-29
+date: 2024-01-28
 categories: ["ETC"]
 # cover:
     # image: ""
