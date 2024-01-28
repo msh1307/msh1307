@@ -15,7 +15,7 @@ date: 2023-12-20
 
 # sonofthec
 인터넷 검색을 통해 enum을 복구한다.
-![[blog/Dreamhack_KAIST_POSTECH_CTF_2023/enum.png]]
+![](blog/Dreamhack_KAIST_POSTECH_CTF_2023/enum.png)
 
 ```JavaScript
  	methods_fn[0] = (__int64)exit_with_code;
@@ -115,10 +115,10 @@ if ( username )
 initialize 함수에서 0x10 size로 검증한다.
 null terminated가 제대로 이루어지지 않을 수 있다.
 ptr에 저장된 객체가 참조되며 프린트된다면, memory leak이 발생할 수 있다.
-![[/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph.png]]
+![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph.png)
 Hex-rays 상에선 보이지 않지만, graph view에선 실제로는 c++의 code level exception의 핸들러들도 구현이 되어있다.
 만약 exception이 raise되면, exception에 따라 stack unwinding 등의 작업을 수행한다.
-![[/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph1.png]]
+![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph1.png)
   
 ```JavaScript
  	v3 = json_object_object_get(obj, "args");
@@ -229,10 +229,10 @@ v5 = __readfsqword(0x28u);
 }
 ```
 이때도 hex-rays 상에 보이지 않는 핸들러가 존재한다.
-![[/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph2.png]]
-![[/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph3.png]]
-![[/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph4.png]]
-![[/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph5.png]]
+![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph2.png)
+![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph3.png)
+![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph4.png)
+![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph5.png)
 이때 priv_flag에 0이 대입된다.
 token status에서 jwt 토큰을 받고, 그 토큰에 대한 정보를 출력한다.
 ```JavaScript
@@ -269,10 +269,10 @@ token status에서 jwt 토큰을 받고, 그 토큰에 대한 정보를 출력�
 이때 문제는 memory leak은 파싱된 jwt의 body를 기준으로 출력하며, 내부적으로 key, value 형태의 오브젝트로 구현된다.
 register시에 initialize되어 null terminated string이 아니라, 파싱된 스트링을 jwt 토큰 제작에 이용하므로 memory leak이 절대 불가능하다.
 하지만 Exception이 발생했을때 복구 로직에 구현 오류가 존재한다.
-![[/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph6.png]]
+![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph6.png)
 exception 복구 로직은 진한 초록색으로 하이라이팅되어있는 부분이다.
-![[/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph7.png]]
-![[/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph8.png]]
+![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph7.png)
+![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph8.png)
 이때 ptr이 참조되면서 복구 로직이 수행된다.
 구현이 가용성에 초점이 맞춰져있어서 exception이 thrown되어도 정상처리를 가능케 해준다.
 이를 악용하기 위해서는 JWT 토큰을 검증 시각에 invalidate하게 만들 필요가 있다.
@@ -888,7 +888,7 @@ std::operator<<<std::char_traits<char>>((int64_t)&std::cout, (int64_t)"Enter key
     v6 = std::operator<<<char>(&std::cout, hashed_output);
 ```
 키 사이즈에 따른 aes 객체들이 구현되어있다.
-![[/balog/Dreamhack_KAIST_POSTECH_CTF_2023/vtables.png]]
+![](/balog/Dreamhack_KAIST_POSTECH_CTF_2023/vtables.png)
 리버싱한 결과, AES ECB임이 확인되었다.
 그리고 따로 처음에 키 스케쥴링 로직도 확인되었다.
 ```JavaScript
@@ -1138,7 +1138,7 @@ p.interactive()
 double free를 이용해서 AES_object + 0x0에 위치한 vtable을 dummy vtable로 수정하고 encrypt를 호출해 plain text를 노출시켜서 메모리 릭을 할 수 있다.
 이후 stdout을 릭하고 이를 덮어서 FSOP를 했다.
 # Lor - Diablo (pwn) & LoR - mechagolem (rev)
-![[/blog/Dreamhack_KAIST_POSTECH_CTF_2023/ida_decomp.png]]
+![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/ida_decomp.png)
 리버싱 겸 포너블이였다.
 먼저 디스어셈블러를 짜고 편의기능을 추가해서 분석을 시도했다.
 ```JavaScript
