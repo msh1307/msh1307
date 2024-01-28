@@ -1137,7 +1137,7 @@ p.interactive()
 ```
 double free를 이용해서 AES_object + 0x0에 위치한 vtable을 dummy vtable로 수정하고 encrypt를 호출해 plain text를 노출시켜서 메모리 릭을 할 수 있다.
 이후 stdout을 릭하고 이를 덮어서 FSOP를 했다.
-# Lor - Diablo (pwn) & **LoR - mechagolem (rev)**
+# Lor - Diablo (pwn) & LoR - mechagolem (rev)
 ![/blog/Dreamhack_KAIST_POSTECH_CTF_2023/ida_decomp.png]
 리버싱 겸 포너블이였다.
 먼저 디스어셈블러를 짜고 편의기능을 추가해서 분석을 시도했다.
@@ -1980,7 +1980,7 @@ p.sendafter(b'input: ',payload)
 p.interactive()
 # POKA{now_you_are_the_only_diablo!!rule_the_world}
 ```
-# **Broken Dahun's Heart**
+# Broken Dahun's Heart
 ```JavaScript
   setvbuf(stdout, 0LL, 2, 0LL);
   print_hi();
