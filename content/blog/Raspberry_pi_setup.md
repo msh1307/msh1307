@@ -15,11 +15,11 @@ categories: ["ETC"]
 평소에 포트포워딩해서 개인 nas겸 CTF시 request bin 같은걸로 잘 쓰고 있었는데, 본딩을 설정하다가 서버가 죽어버렸다.
 라즈베리파이 5도 구매해서 4랑 같이 처음부터 밀고 다시 세팅했다.
 집에 굴러다니던 랜선과 스위치를 이용해서 기존에 WiFi로만 동작하던 서버를 이더넷이 끊켰을때만 WiFi를 사용하도록 바꿨다.
-![](image.png)
+![](/blog/Raspberry_pi_setup/image.png)
 스위치에다 연결했다. 
 
 그리고 케이스 분해하기 귀찮아서 라즈베리파이 전원도 주고, usb 허브까지 꼽아서 ssd에 라즈베리파이 이미지를 덮었다.
-![](image-1.png)
+![](/blog/Raspberry_pi_setup/image-1.png)
 ## network interface
 ```bash
 #!/bin/bash
@@ -92,7 +92,7 @@ logpath = /var/log/fail2ban-ssh.log
 /etc/fail2ban/jail.local을 세팅해준다.
 
 ## Port fowarding
-![](image-2.png)
+![](/blog/Raspberry_pi_setup/image-2.png)
 인터페이스 두개 MAC으로 dhcp ip를 고정시켜준다.
-![](image-3.png)
+![](/blog/Raspberry_pi_setup/image-3.png)
 그리고 포트 열어주면 된다.
