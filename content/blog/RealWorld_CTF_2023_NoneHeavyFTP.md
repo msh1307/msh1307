@@ -1611,7 +1611,7 @@ p.interactive()
 ![](/blog/RealWorld_CTF_2023_NoneHeavyFTP/image1.png)
 nc로 직접 접속해줘야된다.
 ![](/blog/RealWorld_CTF_2023_NoneHeavyFTP/image-1.png)
-![](image5.png)
+![](/blog/RealWorld_CTF_2023_NoneHeavyFTP/image5.png)
 flag 이름 넣어주고 다른 포트로 다시 접속하면 된다.
 ![](/blog/RealWorld_CTF_2023_NoneHeavyFTP/image-1-1.png)
 
