@@ -1,3 +1,14 @@
+---
+title: "TJCTF 2023 - Painter"
+description: "TJCTF 2023 Painter"
+dateString: May 2023
+draft: false
+tags: ["TJCTF_2023","TJCTF_2023 Painter"]
+weight: 30
+date: 2023-05-29
+# cover:
+    # image: ""
+---
 # painter
 ![](/blog/TJCTF_2023_Painter/image.png)
 유사 그림판 컨셉인듯 하다.
