@@ -1,6 +1,6 @@
 ---
 title: "Dreamhack Kaist Postech CTF"
-description: "Dreamhack KAPO CTF"
+# description: "Dreamhack KAPO CTF"
 dateString: December 2023
 draft: false
 tags: ["Kaist Postech CTF","KAPO CTF"]

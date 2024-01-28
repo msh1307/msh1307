@@ -1,6 +1,6 @@
 ---
 title: "CCE 2023 Quals"
-description: "CCE 2023 Quals"
+# description: "CCE 2023 Quals"
 dateString: June 2023
 draft: false
 tags: ["CCE 2023 Junior Quals","CCE 2023"]

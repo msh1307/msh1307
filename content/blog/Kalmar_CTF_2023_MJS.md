@@ -1,6 +1,6 @@
 ---
 title: "Kalmar CTF 2023 - MJS"
-description: "Kalmar CTF 2023 - MJS"
+# description: "Kalmar CTF 2023 - MJS"
 dateString: March 2023
 draft: false
 tags: ["Kalmar CTF 2023","MJS js engine"]

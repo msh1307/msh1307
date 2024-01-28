@@ -1,6 +1,6 @@
 ---
 title: "Linux kernel module programming"
-description: "리눅스 커널 모듈 프로그래밍"
+description: "Linux kernel module programming"
 dateString: January 2023
 draft: false
 tags: ["kernel module programming", "Linux kernel module", "Linux kernel"]

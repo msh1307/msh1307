@@ -1,6 +1,6 @@
 ---
 title: "Real World CTF 2023 - NoneHeavyFTP"
-description: "realworld CTF 2023 NoneHeavy FTP"
+# description: "realworld CTF 2023 NoneHeavy FTP"
 dateString: January 2023
 draft: false
 tags: ["RealWorld CTF 2023","RealWorld CTF NoneheavyFTP"]

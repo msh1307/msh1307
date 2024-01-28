@@ -1,6 +1,6 @@
 ---
 title: "CODEGATE 2023 Quals"
-description: "CODEGATE 2023 Quals"
+# description: "CODEGATE 2023 Quals"
 dateString: June 2023
 draft: false
 tags: ["CODEGATE 2023 Quals"]
