@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>msh1307</title>
+    <link>https://msh1307.kr/</link>
+    <description>Recent content on msh1307</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Raspberry pi server setup</title>
+      <link>https://msh1307.kr/blog/raspberry_pi_setup/</link>
+      <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/raspberry_pi_setup/</guid>
+      <description>setup raspi-img &amp;amp; switch 평소에 포트포워딩해서 개인 nas겸 CTF시 request bin 같은걸로 잘 쓰고 있었는데, 본딩을 설정하다가 서버가 죽어버렸다. 라즈베리파이 5도 구매해서 4랑 같이 처음부터 밀고 다시 세팅했다. 집에 굴러다니던 랜선과 스위치를 이용해서 기존에 WiFi로만 동작하던 서버를 이더넷이 끊켰을때만 WiFi를 사용하도록 바꿨다. 스위치에다 연결했다.
+그리고 케이스 분해하기 귀찮아서 라즈베리파이 전원도 주고, usb 허브까지 꼽아서 ssd에 라즈베리파이 이미지를 덮었다. network interface #!/bin/bash if [ -z &amp;#34;$1&amp;#34; ]; then DELAY=&amp;#34;30&amp;#34; else DELAY=&amp;#34;$1&amp;#34; fi sleep $DELAY EthAddr=$(ip addr show eth0 | grep &amp;#34;inet\b&amp;#34; | awk &amp;#39;{print $2}&amp;#39; | cut -d/ -f1) WiFiAddr=$(ip addr show wlan0 | grep &amp;#34;inet\b&amp;#34; | awk &amp;#39;{print $2}&amp;#39; | cut -d/ -f1) if [ -z $EthAddr ]; then echo &amp;#34;Using WiFi&amp;#34; echo &amp;#34;wlan0 IP=$WiFiAddr&amp;#34; else echo &amp;#34;Using Ethernet!</description>
+    </item>
+    
+    <item>
+      <title>Dreamhack Kaist Postech CTF</title>
+      <link>https://msh1307.kr/blog/dreamhack_kaist_postech_ctf_2023/</link>
+      <pubDate>Wed, 20 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/dreamhack_kaist_postech_ctf_2023/</guid>
+      <description>개인전으로 2위를 했다. 2022, 2023 kaist postech ctf 모든 포너블 챌린지를 해결했고 리버싱 챌린지 하나를 해결했다.
+sonofthec 인터넷 검색을 통해 enum을 복구한다. methods_fn[0] = (__int64)exit_with_code; methods_fn[1] = (__int64)register; methods_fn[2] = (__int64)login; methods_fn[3] = (__int64)token_status; methods_fn[4] = (__int64)update; methods_fn[5] = (__int64)logout; result = upload; methods_fn[6] = (__int64)upload; json으로 입력을 받고 그에 따른 핸들러를 호출한다.
+read_secret(); args = json_object_object_get(json_obj, &amp;#34;args&amp;#34;); STR = (std::chrono::_V2::system_clock *)json_object_object_get(args, &amp;#34;username&amp;#34;); chk_string((__int64)STR); object.username = json_object_get_string(STR); usr_name_len = strlen((const char *)object.</description>
+    </item>
+    
+    <item>
+      <title>CODEGATE 2023 Quals</title>
+      <link>https://msh1307.kr/blog/codegate_junior_2023_quals/</link>
+      <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/codegate_junior_2023_quals/</guid>
+      <description>PCPU 대회 끝나기 2시간정도 전에 잡았었는데, 분석하기 빡세고 구조체도 많아서 시간내로 못풀었다. 나중에 끝나고 천천히 풀어봤다. 파이프라이닝이 적용된 VCPU 컨셉의 문제다.
+Analysis __int64 __fastcall main(int a1, char **a2, char **a3) { init_(); input_validchk(); // opcode(1byte) | operands(3bytes) while ( PC &amp;lt;= instr_sz ) { run_cycle(); ++PC; } run_cycle(); run_cycle(); run_cycle(); print_cycle(); return 0LL; } int init_() { unsigned int v0; // eax v0 = time(0LL); srand(v0); setvbuf(stdin, 0LL, 2, 0LL); setvbuf(stdout, 0LL, 2, 0LL); IF_NODE = malloc(0x10uLL); ID_NODE = malloc(0x10uLL); OF_NODE = malloc(0x10uLL); EX_NODE = malloc(0x10uLL); REG = malloc(0x20uLL); memset(REG, 0, sizeof(REG_SETS)); init_m(IF_NODE); init_m(ID_NODE); init_m(OF_NODE); init_m(EX_NODE); ANON.</description>
+    </item>
+    
+    <item>
+      <title>CCE 2023 Quals</title>
+      <link>https://msh1307.kr/blog/cce_2023_junior_quals/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/cce_2023_junior_quals/</guid>
+      <description>K-Exploit 처음으로 잡아본 커널 문제다. 대회끝나고 50분뒤에 플래그가 나왔다. 아침에 BoB 필기랑 인적성보고 풀려했는데, 대회가 너무 빨리 끝났다. ;;
+Analysis rootfs.img.gz 파일 시스템이 주어지고 bzImage가 주어진다.
+local_run.sh #!/bin/sh qemu-system-x86_64 \ -m 128M \ -cpu kvm64,+smep,+smap \ -kernel bzImage \ -initrd rootfs.img.gz \ -snapshot \ -nographic \ -monitor /dev/null \ -no-reboot \ -append &amp;#34;console=ttyS0 kaslr kpti=1 quiet panic=1&amp;#34; \ -s kaslr, kpti, smep, smap 다 빡세게 걸려있다.
+server_run.sh #!/bin/sh qemu-system-x86_64 \ -m 128M \ -cpu kvm64,+smep,+smap \ -kernel bzImage \ -initrd $1 \ -snapshot \ -nographic \ -monitor /dev/null \ -no-reboot \ -append &amp;#34;console=ttyS0 kaslr kpti=1 quiet panic=1&amp;#34; 똑같은데 디버깅 옵션만 빠진거같다.</description>
+    </item>
+    
+    <item>
+      <title>TJCTF 2023 - Painter</title>
+      <link>https://msh1307.kr/blog/tjctf_2023_painter/</link>
+      <pubDate>Mon, 29 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/tjctf_2023_painter/</guid>
+      <description>painter 유사 그림판 컨셉인듯 하다. Web Assembly 익스플로잇해서 admin bot의 쿠키 탈취가 목적이다. Wasm 취약점 분석은 처음 해봐서 생소했다. admin-bot.js 파일과 dockerfile, app.py, index.wasm 등이 주어진다.
+Analysis admin-bot.js import flag from &amp;#39;./flag.txt&amp;#39;; function sleep(time) { return new Promise(resolve =&amp;gt; { setTimeout(resolve, time); }); } export default { id: &amp;#39;painter&amp;#39;, name: &amp;#39;painter&amp;#39;, urlRegex: /^https:\/\/painter\.tjc\.tf\//, timeout: 10000, handler: async (url, ctx) =&amp;gt; { const page = await ctx.newPage(); await page.goto(&amp;#39;https://painter.tjc.tf&amp;#39;, { waitUntil: &amp;#39;domcontentloaded&amp;#39; }); await page.</description>
+    </item>
+    
+    <item>
+      <title>Kalmar CTF 2023 - MJS</title>
+      <link>https://msh1307.kr/blog/kalmar_ctf_2023_mjs/</link>
+      <pubDate>Mon, 13 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/kalmar_ctf_2023_mjs/</guid>
+      <description>MJS CTF 당시에는 warm-up인데 자바스크립트 엔진이라 도망갔다. 구글링 잘했으면 바로 풀 수 있었을 것 같다.
+Analysis FROM ubuntu:22.04 ENV DEBIAN_FRONTEND noninteractive RUN apt-get update RUN apt-get install -y xinetd python3 xxd COPY mjs / COPY ynetd / COPY remote.py / RUN echo &amp;#34;kalmar{redacted}&amp;#34; &amp;gt; /flag-$(head -c 16 /dev/urandom | xxd -p).txt USER 1000:1000 EXPOSE 10002 CMD ./ynetd -p 10002 &amp;#34;timeout 60 ./remote.py&amp;#34; 22.04이다.
+diff --git a/Makefile b/Makefile index d265d7e..d495e84 100644 --- a/Makefile +++ b/Makefile @@ -5,6 +5,7 @@ BUILD_DIR = build RD ?</description>
+    </item>
+    
+    <item>
+      <title>Linux kernel module programming</title>
+      <link>https://msh1307.kr/blog/linux_kernel_module_programming/</link>
+      <pubDate>Fri, 20 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/linux_kernel_module_programming/</guid>
+      <description>Kernel module? 모듈은 사용자의 혹은 커널의 요구로 읽혀지거나 아니면 없어지는 코드들로 이루어진 프로그램의 어떤 한 조각을 의미한다. 커널은 하나의 큰 모듈들의 집합이라고 볼 수 있다. 모듈들을 통해서 필요할때 더 추가, 혹은 제거를 통해서 커널을 재컴파일 혹은 재가동하지 않고도 커널의 기능을 확장하거나 축소시킬 수 있다.
+lsmod insmod rmmod lsmod를 통해서 현재 커널에 있는 모듈들의 정보를 확인할 수 있다. 이때 lsmod는 /proc/modules를 읽고나서 좀 더 예쁘게 바꿔준다. insmod를 통해서 커널에 모듈을 적재할 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>Real World CTF 2023 - NoneHeavyFTP</title>
+      <link>https://msh1307.kr/blog/realworld_ctf_2023_noneheavyftp/</link>
+      <pubDate>Sat, 07 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/realworld_ctf_2023_noneheavyftp/</guid>
+      <description>NonHeavyFTP 난이도가 Baby인거 보고 달려들었는데, 어려웠다.
+Analysis [ftpconfig] port=2121 maxusers=10000000 interface=0.0.0.0 local_mask=255.255.255.255 minport=30000 maxport=60000 goodbyemsg=Goodbye! keepalive=1 [anonymous] pswd=* accs=readonly root=/server/data/ ftp 서비스의 config 파일이다.
+FROM ubuntu:22.04 ENV DEBIAN_FRONTEND noninteractive RUN apt-get update &amp;amp;&amp;amp;\ apt-get install -y --no-install-recommends wget unzip gcc make libc6-dev gnutls-dev uuid RUN mkdir -p /server/data/ &amp;amp;&amp;amp;\ echo &amp;#34;hello from LightFTP&amp;#34; &amp;gt;&amp;gt; /server/data/hello.txt &amp;amp;&amp;amp;\ cd /server &amp;amp;&amp;amp;\ wget --no-check-certificate https://codeload.github.com/hfiref0x/LightFTP/zip/refs/tags/v2.2 -O LightFTP-2.2.zip &amp;amp;&amp;amp;\ unzip LightFTP-2.2.zip &amp;amp;&amp;amp;\ cd LightFTP-2.2/Source/Release &amp;amp;&amp;amp;\ make &amp;amp;&amp;amp;\ cp -a .</description>
+    </item>
+    
+    <item>
+      <title>About me</title>
+      <link>https://msh1307.kr/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/about/</guid>
+      <description>About me</description>
+    </item>
+    
+    
+  </channel>
+</rss>

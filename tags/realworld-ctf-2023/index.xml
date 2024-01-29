@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>RealWorld CTF 2023 on msh1307</title>
+    <link>https://msh1307.kr/tags/realworld-ctf-2023/</link>
+    <description>Recent content in RealWorld CTF 2023 on msh1307</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/tags/realworld-ctf-2023/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Real World CTF 2023 - NoneHeavyFTP</title>
+      <link>https://msh1307.kr/blog/realworld_ctf_2023_noneheavyftp/</link>
+      <pubDate>Sat, 07 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/realworld_ctf_2023_noneheavyftp/</guid>
+      <description>NonHeavyFTP 난이도가 Baby인거 보고 달려들었는데, 어려웠다.
+Analysis [ftpconfig] port=2121 maxusers=10000000 interface=0.0.0.0 local_mask=255.255.255.255 minport=30000 maxport=60000 goodbyemsg=Goodbye! keepalive=1 [anonymous] pswd=* accs=readonly root=/server/data/ ftp 서비스의 config 파일이다.
+FROM ubuntu:22.04 ENV DEBIAN_FRONTEND noninteractive RUN apt-get update &amp;amp;&amp;amp;\ apt-get install -y --no-install-recommends wget unzip gcc make libc6-dev gnutls-dev uuid RUN mkdir -p /server/data/ &amp;amp;&amp;amp;\ echo &amp;#34;hello from LightFTP&amp;#34; &amp;gt;&amp;gt; /server/data/hello.txt &amp;amp;&amp;amp;\ cd /server &amp;amp;&amp;amp;\ wget --no-check-certificate https://codeload.github.com/hfiref0x/LightFTP/zip/refs/tags/v2.2 -O LightFTP-2.2.zip &amp;amp;&amp;amp;\ unzip LightFTP-2.2.zip &amp;amp;&amp;amp;\ cd LightFTP-2.2/Source/Release &amp;amp;&amp;amp;\ make &amp;amp;&amp;amp;\ cp -a .</description>
+    </item>
+    
+  </channel>
+</rss>
