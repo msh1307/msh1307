@@ -96,3 +96,7 @@ logpath = /var/log/fail2ban-ssh.log
 인터페이스 두개 MAC으로 dhcp ip를 고정시켜준다.
 ![](/blog/Raspberry_pi_setup/image-3.png)
 그리고 포트 열어주면 된다.
+
+## Cloudflare
+![](/blog/Raspberry_pi_setup/image-4.png)
+그리고 이제 도메인 네임서버 바꿔주고 A 레코드 DNS only로 서브도메인도 설정해줬다.
