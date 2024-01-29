@@ -98,4 +98,43 @@ logpath = /var/log/fail2ban-ssh.log
 
 ## Cloudflare
 ![](/blog/Raspberry_pi_setup/image-4.png)
-그리고 이제 도메인 네임서버 바꿔주고 A 레코드 DNS only로 서브도메인도 설정해줬다.
+그리고 이제 네임서버 바꿔주고 A 레코드 DNS only로 서브도메인도 설정해줬다.
+하나는 블로그라 깃허브로 연결되어있고, 서브도메인을 따로 두고 직접 라즈베리파이 서버로 들어가도록 했다.
+
+## SSL
+개인 nas처럼 쓰려는데 ssl을 자체적으로 지원은 안하는것 같아서 nginx로 프록시해서 ssl을 적용시켰다.
+80번 포트 포트포워딩해주고, 설정해주면 된다.
+```
+sudo certbot
+```
+이후 서브도메인으로 주면 알아서 설정해준다.
+/etc/nginx/sites-enabled/* 를 수정해준다.
+을을
+80번 포트는 proxy_pass로 https로 넘겨주게 설정했다.
+```
+    server_name raspi.msh1307.kr; # managed by Certbot
+
+    location / {
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+      proxy_pass http://127.0.0.1:8080/;
+
+      # First attempt to serve request as file, then
+      # as directory, then fall back to displaying a 404.
+      #try_files $uri $uri/ =404;
+    }
+```
+cerbot이 자동으로 생성한 부분 조금 지워주고 수정하면 된다.
+
+```
+sudo nginx -줄줄
+sudo service nginx restart
+```
+
+그리고 crontab에 넣어서 자동으로 인증서를 갱신하게 해줄 수 있다.
+```
+00 02 * * 0 sudo certbot renew --quiet
+```
+
