@@ -109,8 +109,7 @@ sudo certbot
 ```
 이후 서브도메인으로 주면 알아서 설정해준다.
 /etc/nginx/sites-enabled/* 를 수정해준다.
-을을
-80번 포트는 proxy_pass로 https로 넘겨주게 설정했다.
+
 ```
     server_name raspi.msh1307.kr; # managed by Certbot
 
