@@ -78,7 +78,7 @@ crontab -e로 넣어준다.
 [DEFAULT]
 findtime = 1d
 maxretry = 8
-bantime = 3w
+bantime = 3w``
 backend = systemd
 ignoreip = 127.0.0.1/8 192.168.0.0/24
 
