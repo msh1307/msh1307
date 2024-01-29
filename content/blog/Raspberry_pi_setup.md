@@ -129,7 +129,7 @@ sudo certbot
 cerbot이 자동으로 생성한 부분 조금 지워주고 수정하면 된다.
 
 ```
-sudo nginx -줄줄
+sudo nginx -t
 sudo service nginx restart
 ```
 
