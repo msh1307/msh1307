@@ -125,7 +125,7 @@ sudo certbot
       #try_files $uri $uri/ =404;
     }
 ```
-cerbot이 자동으로 생성한 부분 조금 지워주고 수정하면 된다.
+certbot이 자동으로 생성한 부분 조금 지워주고 수정하면 된다.
 
 ```
 sudo nginx -t
