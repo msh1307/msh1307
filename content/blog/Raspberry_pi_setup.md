@@ -22,7 +22,7 @@ categories: ["ETC"]
 
 라즈베리파이 pcie 인터페이스에 WD SN770을 연결했는데 제대로 동작하지 않았다.
 중국산 500기가 ssd 연결하니 잘 동작해서 usb3.0으로 연결했다.
-![](final.jpg)
+![](/blog/final.jpg)
 
 
 ## network interface
