@@ -18,8 +18,13 @@ categories: ["ETC"]
 ![](/blog/Raspberry_pi_setup/image.png)
 스위치에다 연결했다. 
 
-그리고 케이스 분해하기 귀찮아서 라즈베리파이 전원도 주고, usb 허브까지 꼽아서 ssd에 라즈베리파이 이미지를 덮었다.
 ![](/blog/Raspberry_pi_setup/image-1.png)
+
+라즈베리파이 pcie 인터페이스에 WD SN770을 연결했는데 제대로 동작하지 않았다.
+중국산 500기가 ssd 연결하니 잘 동작해서 usb3.0으로 연결했다.
+![](final.jpg)
+
+
 ## network interface
 ```bash
 #!/bin/bash
@@ -101,9 +106,10 @@ logpath = /var/log/fail2ban-ssh.log
 그리고 이제 네임서버 바꿔주고 A 레코드 DNS only로 서브도메인도 설정해줬다.
 하나는 블로그라 깃허브로 연결되어있고, 서브도메인을 따로 두고 직접 라즈베리파이 서버로 들어가도록 했다.
 
-## SSL
+## SSL & Proxy
 개인 nas처럼 쓰려는데 ssl을 자체적으로 지원은 안하는것 같아서 nginx로 프록시해서 ssl을 적용시켰다.
-80번 포트 포트포워딩해주고, 설정해주면 된다.
+그리고 라즈베리파이4에서 리버스프록시로 라즈베리파이5로도 포워딩하도록 설정했다.
+
 ```
 sudo certbot
 ```
@@ -125,7 +131,9 @@ sudo certbot
       #try_files $uri $uri/ =404;
     }
 ```
-certbot이 자동으로 생성한 부분 조금 지워주고 수정하면 된다.
+certbot이 자동으로 생성한 부분 조금 지워주고 수정해서 루프백으로 포워딩해주는 부분을 추가한다.
+그리고 라즈베리파이5로도 포워딩이 진행되어야하니 설정을 그대로 복사해서 listen만 다른 포트로 지정해주면 된다.
+
 
 ```
 sudo nginx -t
@@ -136,4 +144,3 @@ sudo service nginx restart
 ```
 00 02 * * 0 sudo certbot renew --quiet
 ```
-
