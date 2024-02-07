@@ -14,17 +14,13 @@ categories: ["ETC"]
 ## raspi-img & switch 
 평소에 포트포워딩해서 개인 nas겸 CTF시 request bin 같은걸로 잘 쓰고 있었는데, 본딩을 설정하다가 서버가 죽어버렸다.
 라즈베리파이 5도 구매해서 4랑 같이 처음부터 밀고 다시 세팅했다.
-집에 굴러다니던 랜선과 스위치를 이용해서 기존에 WiFi로만 동작하던 서버를 이더넷이 끊켰을때만 WiFi를 사용하도록 바꿨다.
-![](/blog/Raspberry_pi_setup/image.png)
-스위치에다 연결했다. 
-
-![](/blog/Raspberry_pi_setup/image-1.png)
+기존에 WiFi로만 동작하던 서버를 이더넷이 끊켰을때만 WiFi를 사용하도록 바꿨다.
+![](/blog/Raspberry_pi_setup/switch.jpg)
+cat.5e 랜선을 연결하고 1Gbps를 지원하는 스위칭 허브를 구매하여 연결했다.
 
 라즈베리파이 pcie 인터페이스에 WD SN770을 연결했는데 제대로 동작하지 않았다.
 중국산 500기가 ssd 연결하니 잘 동작해서 usb3.0으로 연결했다.
-![](/blog/Raspberry_pi_setup/final.jpg)
-
-
+![](/blog/Raspberry_pi_setup/serv.jpg)
 ## network interface
 ```bash
 #!/bin/bash
