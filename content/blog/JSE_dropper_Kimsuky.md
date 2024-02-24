@@ -21,11 +21,11 @@ categories: ["Malware"]
 vm안에서 실행하고 process create로 필터링해서 확인해보면, 
 WScript.exe가 돌면서 프로세스를 생성한다.
 
-![](blog/Kimsuky_JSE_dropper/95bb593a80b9cb51ee57f5d7978dc7c5.png)
+![](/blog/Kimsuky_JSE_dropper/95bb593a80b9cb51ee57f5d7978dc7c5.png)
 dll를 regsvr32.exe로 등록한다.
 그냥 pdf viewer처럼 동작하면서 외교부가판 문서를 열어준다.
 하지만 procmon으로 확인해보면 process create를 걸고 확인해보면 실제로는 WScript가 실행되면서 실제 악성코드를 드랍한다.
-![](blog/Kimsuky_JSE_dropper/8cacca08b7bb4088e86c62097281ce23.png)
+![](/blog/Kimsuky_JSE_dropper/8cacca08b7bb4088e86c62097281ce23.png)
 regsvr32.exe로 악성 dll을 로드하고 실행 흐름이 넘어간다.
 이러한 형태는 백신을 우회하기 위해 사용된다.
 ## Dll Extraction
@@ -66,11 +66,11 @@ with open('./dropped_dll.dll','wb') as f:
 ## regsvr32.exe
 처음에 실행흐름을 프록시하기 위해서 regsvr32.exe를 호출했다.
 악성 dll 분석 이전에 regsvr32.exe에서 어떤 함수를 호출하는지 확인했다.
-![](blog/Kimsuky_JSE_dropper/4a47a0db6e60853dedfcfdf08a5ca249.png)
+![](/blog/Kimsuky_JSE_dropper/4a47a0db6e60853dedfcfdf08a5ca249.png)
 DllRegisterServer 문자열을을 로드한다.
 
-![](blog/Kimsuky_JSE_dropper/fb5c81ed3a220004b71069645f112867.png)
-![](blog/Kimsuky_JSE_dropper/10fb15c77258a991b0028080a64fb42d.png)
+![](/blog/Kimsuky_JSE_dropper/fb5c81ed3a220004b71069645f112867.png)
+![](/blog/Kimsuky_JSE_dropper/10fb15c77258a991b0028080a64fb42d.png)
 메인 부분이다. 
 실질적으로 DllRegisterServer를 호출한다.
 
@@ -85,7 +85,7 @@ DllRegisterServer 문자열을을 로드한다.
 ```
 sub_7FFF20E781A0는 문자열을 할당한다.
 실질적으로 실행되는 로직은 아래와 같다.
-![](blog/Kimsuky_JSE_dropper/09dd8c2662b96ce14928333f055c5580.png)
+![](/blog/Kimsuky_JSE_dropper/09dd8c2662b96ce14928333f055c5580.png)
 
 최종적으로 다음과 같은 구조를 가지게된다.
 넘겨지는 size 별로 처리가 다르다. size가 7 이하라면, a\[0\], a\[1\] 영역에 바로 문자열을 쓴다.
@@ -98,7 +98,7 @@ a[2] = sz
 이후 sub_7FFF20E8B330을 호출한다.
 
 실질적으로 여기서 디코딩을 수행한다.
-![](blog/Kimsuky_JSE_dropper/8266e4bfeda1bd42d8f9794eb4ea0a13.png)
+![](/blog/Kimsuky_JSE_dropper/8266e4bfeda1bd42d8f9794eb4ea0a13.png)
 처음에 0x10개의 wchar_t를 읽고 rot_hex에 저장한다.
 문자열 size가 8 이상이면, \*obj를 문자열로 참조한다.
 루프를 돌면서 hex_rot\[iterator%0x10\]^ \*obj\[iter\_\] ^ dec_16을 한다.
@@ -243,52 +243,52 @@ for xref in XrefsTo(target, 0):
 print("done")
 ```
 적용시키면 다음과 같이 주석으로 decrypt시 string을 보여준다.
-![](blog/Kimsuky_JSE_dropper/f19c9085129709ee14d013be869df69b.png)
+![](/blog/Kimsuky_JSE_dropper/f19c9085129709ee14d013be869df69b.png)
 
 ### Behavior
-![](blog/Kimsuky_JSE_dropper/9eb9cd58b9ea5e04c890326b5c1f471f.png)
+![](/blog/Kimsuky_JSE_dropper/9eb9cd58b9ea5e04c890326b5c1f471f.png)
 대부분의 중요한 API들은 string decryption이후 런타임에 동적으로 호출된다
-![](blog/Kimsuky_JSE_dropper/602e8f042f463dc47ebfdf6a94ed5a6d.png)
+![](/blog/Kimsuky_JSE_dropper/602e8f042f463dc47ebfdf6a94ed5a6d.png)
 ESTCommon.dll을 준비하고, 문자열을 연결한다.
-![](blog/Kimsuky_JSE_dropper/7afbb1602613ec52b265d7a54ad27330.png)
-![](blog/Kimsuky_JSE_dropper/586e508f161f26ce94633729ac56c602.png)
+![](/blog/Kimsuky_JSE_dropper/7afbb1602613ec52b265d7a54ad27330.png)
+![](/blog/Kimsuky_JSE_dropper/586e508f161f26ce94633729ac56c602.png)
 이후 data에 이 스트링을 넣는다.
 
-![](blog/Kimsuky_JSE_dropper/59b2900aa03cb2182a51cdb520b535b6.png)
+![](/blog/Kimsuky_JSE_dropper/59b2900aa03cb2182a51cdb520b535b6.png)
 레지스트리키를 등록한다.
-![](blog/Kimsuky_JSE_dropper/9eb60bc8bf2b004e4db7d1cc0d5f1d8c.png)
+![](/blog/Kimsuky_JSE_dropper/9eb60bc8bf2b004e4db7d1cc0d5f1d8c.png)
 이렇게 등록해놓고나서 KeyboardMonitor, ScreenMonitor, FolderMonitor, UsbMonitor 플래그를 쓴다.
-![](blog/Kimsuky_JSE_dropper/c00b57557743e709b8b96933432e0dfa.png)
-![](blog/Kimsuky_JSE_dropper/7b6fbd4c592d356e087a0f1053751007.png)
+![](/blog/Kimsuky_JSE_dropper/c00b57557743e709b8b96933432e0dfa.png)
+![](/blog/Kimsuky_JSE_dropper/7b6fbd4c592d356e087a0f1053751007.png)
 특정 파일에 a로 쓰는것을 확인할 수 있다.
 
-![](blog/Kimsuky_JSE_dropper/d642f8c3d2d6c1ab174d170d2dc8ed78.png)
+![](/blog/Kimsuky_JSE_dropper/d642f8c3d2d6c1ab174d170d2dc8ed78.png)
 뮤텍스를 생성해서 중복 실행을 방지한다.
-![](blog/Kimsuky_JSE_dropper/1e412544122065c25107eadecd8208c7.png)
+![](/blog/Kimsuky_JSE_dropper/1e412544122065c25107eadecd8208c7.png)
 마지막으로 여러 쓰레드를 생성한다.
 #### Input Capture
-![](blog/Kimsuky_JSE_dropper/c9baca3cda1c39194c04fe2170c3da65.png)
+![](/blog/Kimsuky_JSE_dropper/c9baca3cda1c39194c04fe2170c3da65.png)
 log.txt에 저장하는것으로 보인다. 
-![](blog/Kimsuky_JSE_dropper/88399fdcf82e54c15ebbaabe86ff3e5e.png)
-![](blog/Kimsuky_JSE_dropper/ba6beb7ae28ef0a97d7a0a038feb5060.png)
-![](blog/Kimsuky_JSE_dropper/079f4fb55b755f6f198bee97d7c95390.png)
+![](/blog/Kimsuky_JSE_dropper/88399fdcf82e54c15ebbaabe86ff3e5e.png)
+![](/blog/Kimsuky_JSE_dropper/ba6beb7ae28ef0a97d7a0a038feb5060.png)
+![](/blog/Kimsuky_JSE_dropper/079f4fb55b755f6f198bee97d7c95390.png)
 v2를 0~255까지 순회시키면서 입력을 캡쳐한다.
 #### Screen Capture
-![](blog/Kimsuky_JSE_dropper/7134f8f5aced525d1c11d229063305e7.png)
+![](/blog/Kimsuky_JSE_dropper/7134f8f5aced525d1c11d229063305e7.png)
 계속 루프를 돈다.
-![](blog/Kimsuky_JSE_dropper/75c168b671d4ce827fca23907d85f114.png)capture 함수에서 캡쳐하고 비트맵으로 저장한다.
-![](blog/Kimsuky_JSE_dropper/7ae5e99a8c2f19cd25f44313293553aa.png)
+![](/blog/Kimsuky_JSE_dropper/75c168b671d4ce827fca23907d85f114.png)capture 함수에서 캡쳐하고 비트맵으로 저장한다.
+![](/blog/Kimsuky_JSE_dropper/7ae5e99a8c2f19cd25f44313293553aa.png)
 #### Collect media files
-![](blog/Kimsuky_JSE_dropper/2484a7df36877a14689574eebda6dd7c.png)
-![](blog/Kimsuky_JSE_dropper/a969aaab995e4aaddbfe5fc3781fa63b.png)
-![](blog/Kimsuky_JSE_dropper/258f63b9448490d648948081e23d86db.png)
-![](blog/Kimsuky_JSE_dropper/fff5c6cf4ca1543a72b64bf5dff0d8ef.png)
+![](/blog/Kimsuky_JSE_dropper/2484a7df36877a14689574eebda6dd7c.png)
+![](/blog/Kimsuky_JSE_dropper/a969aaab995e4aaddbfe5fc3781fa63b.png)
+![](/blog/Kimsuky_JSE_dropper/258f63b9448490d648948081e23d86db.png)
+![](/blog/Kimsuky_JSE_dropper/fff5c6cf4ca1543a72b64bf5dff0d8ef.png)
 Desktop, Downloads, Documents, INetCache\\IE 같은곳을 돈다.
-![](blog/Kimsuky_JSE_dropper/b9153260449b3690d1c2c5963a8cd00f.png)
+![](/blog/Kimsuky_JSE_dropper/b9153260449b3690d1c2c5963a8cd00f.png)
 파일을 찾아서 저장한다.
 #### Collect removable media files
-![](blog/Kimsuky_JSE_dropper/5004a2bbca35d7d745207c2f34e2b909.png)
+![](/blog/Kimsuky_JSE_dropper/5004a2bbca35d7d745207c2f34e2b909.png)
 이런식으로 A부터 다 돌려보는식으로 체크한다.
-![](blog/Kimsuky_JSE_dropper/19ee203f0229aae4b91567bff25442e5.png)
+![](/blog/Kimsuky_JSE_dropper/19ee203f0229aae4b91567bff25442e5.png)
 
 
