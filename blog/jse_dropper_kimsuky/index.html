@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>msh1307</title>
-<meta name="keywords" content="">
+<title>Kimsuky malware analysis | msh1307</title>
+<meta name="keywords" content="Kimsuky malware, jse dropper">
 <meta name="description" content="Overview 북한 Kimsuky 위협 그룹에서 외교부를 타겟으로 악성코드를 유포했다.
 Analysis Procmon 외교부가판2021-05-07로 유포되었고, .pdf.jse의 형태를 취하고 있었다. vm안에서 실행하고 process create로 필터링해서 확인해보면, WScript.exe가 돌면서 프로세스를 생성한다.
 dll를 regsvr32.exe로 등록한다. 그냥 pdf viewer처럼 동작하면서 외교부가판 문서를 열어준다. 하지만 procmon으로 확인해보면 process create를 걸고 확인해보면 실제로는 WScript가 실행되면서 실제 악성코드를 드랍한다. regsvr32.exe로 악성 dll을 로드하고 실행 흐름이 넘어간다. 이러한 형태는 백신을 우회하기 위해 사용된다.
@@ -66,18 +66,18 @@ gtag('config', 'G-BR89V2WEC0');
         }
 
     </style>
-</noscript><meta property="og:title" content="" />
+</noscript><meta property="og:title" content="Kimsuky malware analysis" />
 <meta property="og:description" content="Overview 북한 Kimsuky 위협 그룹에서 외교부를 타겟으로 악성코드를 유포했다.
 Analysis Procmon 외교부가판2021-05-07로 유포되었고, .pdf.jse의 형태를 취하고 있었다. vm안에서 실행하고 process create로 필터링해서 확인해보면, WScript.exe가 돌면서 프로세스를 생성한다.
 dll를 regsvr32.exe로 등록한다. 그냥 pdf viewer처럼 동작하면서 외교부가판 문서를 열어준다. 하지만 procmon으로 확인해보면 process create를 걸고 확인해보면 실제로는 WScript가 실행되면서 실제 악성코드를 드랍한다. regsvr32.exe로 악성 dll을 로드하고 실행 흐름이 넘어간다. 이러한 형태는 백신을 우회하기 위해 사용된다.
 Dll Extraction with open(&#39;./1.jse&#39;,&#39;rb&#39;) as f: buf = f." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://msh1307.kr/blog/jse_dropper_kimsuky/" /><meta property="article:section" content="blog" />
-
-
+<meta property="article:published_time" content="2024-02-24T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2024-02-24T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+<meta name="twitter:title" content="Kimsuky malware analysis"/>
 <meta name="twitter:description" content="Overview 북한 Kimsuky 위협 그룹에서 외교부를 타겟으로 악성코드를 유포했다.
 Analysis Procmon 외교부가판2021-05-07로 유포되었고, .pdf.jse의 형태를 취하고 있었다. vm안에서 실행하고 process create로 필터링해서 확인해보면, WScript.exe가 돌면서 프로세스를 생성한다.
 dll를 regsvr32.exe로 등록한다. 그냥 pdf viewer처럼 동작하면서 외교부가판 문서를 열어준다. 하지만 procmon으로 확인해보면 process create를 걸고 확인해보면 실제로는 WScript가 실행되면서 실제 악성코드를 드랍한다. regsvr32.exe로 악성 dll을 로드하고 실행 흐름이 넘어간다. 이러한 형태는 백신을 우회하기 위해 사용된다.
@@ -98,7 +98,7 @@ Dll Extraction with open(&#39;./1.jse&#39;,&#39;rb&#39;) as f: buf = f."/>
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "",
+      "name": "Kimsuky malware analysis",
       "item": "https://msh1307.kr/blog/jse_dropper_kimsuky/"
     }
   ]
@@ -108,17 +108,17 @@ Dll Extraction with open(&#39;./1.jse&#39;,&#39;rb&#39;) as f: buf = f."/>
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "",
-  "name": "",
+  "headline": "Kimsuky malware analysis",
+  "name": "Kimsuky malware analysis",
   "description": "Overview 북한 Kimsuky 위협 그룹에서 외교부를 타겟으로 악성코드를 유포했다.\nAnalysis Procmon 외교부가판2021-05-07로 유포되었고, .pdf.jse의 형태를 취하고 있었다. vm안에서 실행하고 process create로 필터링해서 확인해보면, WScript.exe가 돌면서 프로세스를 생성한다.\ndll를 regsvr32.exe로 등록한다. 그냥 pdf viewer처럼 동작하면서 외교부가판 문서를 열어준다. 하지만 procmon으로 확인해보면 process create를 걸고 확인해보면 실제로는 WScript가 실행되면서 실제 악성코드를 드랍한다. regsvr32.exe로 악성 dll을 로드하고 실행 흐름이 넘어간다. 이러한 형태는 백신을 우회하기 위해 사용된다.\nDll Extraction with open(\u0026#39;./1.jse\u0026#39;,\u0026#39;rb\u0026#39;) as f: buf = f.",
   "keywords": [
-    
+    "Kimsuky malware", "jse dropper"
   ],
   "articleBody": "Overview 북한 Kimsuky 위협 그룹에서 외교부를 타겟으로 악성코드를 유포했다.\nAnalysis Procmon 외교부가판2021-05-07로 유포되었고, .pdf.jse의 형태를 취하고 있었다. vm안에서 실행하고 process create로 필터링해서 확인해보면, WScript.exe가 돌면서 프로세스를 생성한다.\ndll를 regsvr32.exe로 등록한다. 그냥 pdf viewer처럼 동작하면서 외교부가판 문서를 열어준다. 하지만 procmon으로 확인해보면 process create를 걸고 확인해보면 실제로는 WScript가 실행되면서 실제 악성코드를 드랍한다. regsvr32.exe로 악성 dll을 로드하고 실행 흐름이 넘어간다. 이러한 형태는 백신을 우회하기 위해 사용된다.\nDll Extraction with open('./1.jse','rb') as f: buf = f.read(0x2000000) st = buf[(buf.find(b'd6rdVIu1CNC = \"')):] st = (st[st.find(b'\"')+1:]) dropped = st[:st.find(b'\"')] with open('./dropped_base','wb') as f: f.write(dropped) with open('./dropped_base','rb') as f: buf = f.read(0x20000000) import base64 dec = (base64.decodebytes(buf)) with open('./dropped','wb') as f: f.write(dec) # dropped pdf with open('./1.jse','rb') as f: buf = f.read(0x2000000) st = buf[(buf.find(b'tbPaitkT4N4 =')):] st = (st[st.find(b'\"')+1:]) dropped = st[:st.find(b'\"')] with open('./dropped_dll_base','wb') as f: f.write(dropped) with open('./dropped_dll_base','rb') as f: buf = f.read(0x200000000) dec = base64.decodebytes((base64.decodebytes(buf))) with open('./dropped_dll.dll','wb') as f: f.write(dec) # dropped pdf 추출하면 악성 dll과 pdf를 얻을 수 있다.\nReverse engineering regsvr32.exe 처음에 실행흐름을 프록시하기 위해서 regsvr32.exe를 호출했다. 악성 dll 분석 이전에 regsvr32.exe에서 어떤 함수를 호출하는지 확인했다. DllRegisterServer 문자열을을 로드한다.\n메인 부분이다. 실질적으로 DllRegisterServer를 호출한다.\ndropped_dll.dll 분석하다보면 다음과 같은 패턴이 보인다.\nobj[2] = 0i64; obj[3] = 7i64; LOWORD(obj[0]) = 0; sub_7FFF20E781A0(obj, L\"651a77c90efb857ab62008a5a730e362365c52c9a23ec8c4001329a13434e5b6e3cc8b774885327ffaef\", 84ui64); v1 = sub_7FFF20E8B330(obj, v30); sub_7FFF20E781A0는 문자열을 할당한다. 실질적으로 실행되는 로직은 아래와 같다. 최종적으로 다음과 같은 구조를 가지게된다. 넘겨지는 size 별로 처리가 다르다. size가 7 이하라면, a[0], a[1] 영역에 바로 문자열을 쓴다. 더 크다면 아래와 같은 구조로 할당한다.\na[0] = str_mem ... a[2] = sz 이후 sub_7FFF20E8B330을 호출한다.\n실질적으로 여기서 디코딩을 수행한다. 처음에 0x10개의 wchar_t를 읽고 rot_hex에 저장한다. 문자열 size가 8 이상이면, *obj를 문자열로 참조한다. 루프를 돌면서 hex_rot[iterator%0x10]^ *obj[iter_] ^ dec_16을 한다. dec_16은 전에 참조한 hex가 들어간다.\nloader.cpp #include #include #include #include void hexdump(void *ptr, int buflen) { unsigned char *buf = (unsigned char*)ptr; int i, j; for (i=0; i\u003cbuflen; i+=16) { printf(\"%06x: \", i); for (j=0; j\u003c16; j++) if (i+j \u003c buflen) printf(\"%02x \", buf[i+j]); else printf(\" \"); printf(\" \"); for (j=0; j\u003c16; j++) if (i+j \u003c buflen) printf(\"%c\", isprint(buf[i+j]) ? buf[i+j] : '.'); printf(\"\\n\"); } } int main() { const char* libraryPath = \".\\\\dropped_dll.dll\"; HINSTANCE hDLL = LoadLibraryA(libraryPath); if (hDLL == NULL) { DWORD error = GetLastError(); std::cerr \u003c\u003c \"failed to load dll. Error code: \" \u003c\u003c error \u003c\u003c std::endl; return 1; } const char* functionName = \"DllRegisterServer\"; typedef int64_t * (*f_type)(int64_t * a, int64_t * b); typedef int64_t * (*f_type1)(int64_t * a, wchar_t * src, int64_t sz); uint64_t v = reinterpret_cast\u003cuint64_t\u003e(GetProcAddress(hDLL, functionName)); if (v == NULL) { std::cerr \u003c\u003c \"failed to get the function.\" \u003c\u003c std::endl; FreeLibrary(hDLL); return 1; } uint64_t t = v - (0x7FFBE99D8CA0-0x7FFBE99CB330); uint64_t t1 = v - (0x7FFBE99D8CA0-0x07FFBE99B81A0); std::cout \u003c\u003c \"DllRegisterServer addr: 0x\" \u003c\u003c std::hex \u003c\u003c v \u003c\u003c std::endl; std::cout \u003c\u003c \"enc addr: 0x\" \u003c\u003c std::hex \u003c\u003c t \u003c\u003c std::endl; std::cout \u003c\u003c \"prep addr: 0x\" \u003c\u003c std::hex \u003c\u003c t1 \u003c\u003c std::endl \u003c\u003c std::endl; f_type dec = reinterpret_cast\u003cf_type\u003e(t); f_type1 prep = reinterpret_cast\u003cf_type1\u003e(t1); int64_t a[4]; a[1] = 0; a[2] = 0; a[3] = 7; int64_t * ret = prep(a,L\"651a77c90efb857ab62008a5a730e362365c52c9a23ec8c4001329a13434e5b6e3cc8b774885327ffaef\", 84); std::cout \u003c\u003c \"ret[0] = \" \u003c\u003c std::hex \u003c\u003c ret[0] \u003c\u003c \" -\u003e \"; std::wcout \u003c\u003c (wchar_t *)ret[0] \u003c\u003c std::endl; std::cout \u003c\u003c \"ret[1] = \" \u003c\u003c std::hex \u003c\u003c ret[1] \u003c\u003c std::endl; std::cout \u003c\u003c \"ret[2] = \" \u003c\u003c std::hex \u003c\u003c ret[2] \u003c\u003c std::endl; std::cout \u003c\u003c \"ret[3] = \" \u003c\u003c std::hex \u003c\u003c ret[3] \u003c\u003c std::endl; int64_t b[4]; int x; std::cin \u003e\u003e x; int64_t * ret1 = dec(a,b); std::wcout \u003c\u003c (wchar_t *)ret1[0] \u003c\u003c std::endl; FreeLibrary(hDLL); return 0; } 분석할때 문자열 decryption을 쉽게하려고 위와 같은 dll로더를 작성했다. 근데 생각보다 저런 패턴의 hex 문자열들이 너무 많아서 하나씩 돌리기엔 무리인것 같아서 idapython을 작성했다.\ndecrypt.py def dec(v): rot_hex = [] out = '' for i in range(16): rot_hex.append(int(v[i*2:i*2+2],16)) x = 0 for i in range((len(v)-32)//2): hex_ = int(v[i*2+0x20: i*2+0x22],16) res = rot_hex[i%0x10] ^ x ^ hex_ out += chr(res) x = hex_ return out def is_hex(v): f = 1 for i in range(len(v)): if v[i] not in '0123456789abcdef': f = 0 break return f from idautils import * import idaapi, ida_ua, idc def comment(ea,comment): cfunc = idaapi.decompile(ea) tl = idaapi.treeloc_t() tl.ea = ea tl.itp = idaapi.ITP_SEMI cfunc.set_user_cmt(tl, comment) cfunc.save_user_cmts() target = 0x07FFF20E781A0 for xref in XrefsTo(target, 0): args = idaapi.get_arg_addrs(xref.frm) if args: insn = ida_ua.insn_t() ida_ua.decode_insn(insn, args[1]) if insn.itype == 0x5c: wstr = idc.get_operand_value(insn.ea,1) t = idc.get_operand_type(insn.ea,1) if t == 2: sz = idc.get_operand_value(args[2],1) if sz == 0 or idc.get_operand_type(args[2],1) == 1: # r8d == 0 continue if sz \u003e 0x20 and sz \u0026 1 == 0: continue v = ida_bytes.get_bytes(wstr, sz*2) estr = '' for i in range(sz): estr += chr(v[2*i]) if is_hex(estr): comment(xref.frm, dec(estr)) print(\"done\") 적용시키면 다음과 같이 주석으로 decrypt시 string을 보여준다. Behavior 대부분의 중요한 API들은 string decryption이후 런타임에 동적으로 호출된다 ESTCommon.dll을 준비하고, 문자열을 연결한다. 이후 data에 이 스트링을 넣는다.\n레지스트리키를 등록한다. 이렇게 등록해놓고나서 KeyboardMonitor, ScreenMonitor, FolderMonitor, UsbMonitor 플래그를 쓴다. 특정 파일에 a로 쓰는것을 확인할 수 있다.\n뮤텍스를 생성해서 중복 실행을 방지한다. 마지막으로 여러 쓰레드를 생성한다.\nInput Capture log.txt에 저장하는것으로 보인다. v2를 0~255까지 순회시키면서 입력을 캡쳐한다.\nScreen Capture 계속 루프를 돈다. capture 함수에서 캡쳐하고 비트맵으로 저장한다. Collect media files Desktop, Downloads, Documents, INetCache\\IE 같은곳을 돈다. 파일을 찾아서 저장한다.\nCollect removable media files 이런식으로 A부터 다 돌려보는식으로 체크한다. ",
   "wordCount" : "848",
   "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
+  "datePublished": "2024-02-24T00:00:00Z",
+  "dateModified": "2024-02-24T00:00:00Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://msh1307.kr/blog/jse_dropper_kimsuky/"
@@ -222,11 +222,12 @@ Dll Extraction with open(&#39;./1.jse&#39;,&#39;rb&#39;) as f: buf = f."/>
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://msh1307.kr">Home</a>&nbsp;»&nbsp;<a href="https://msh1307.kr/blog/">Blogs</a></div>
     <h1 class="post-title">
-      
+      Kimsuky malware analysis
     </h1>
     <div class="post-meta">
 
 
+February 2024
 
 </div>
   </header> <div class="toc">
@@ -575,6 +576,8 @@ Desktop, Downloads, Documents, INetCache\IE 같은곳을 돈다.
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://msh1307.kr/tags/kimsuky-malware/">Kimsuky malware</a></li>
+      <li><a href="https://msh1307.kr/tags/jse-dropper/">jse dropper</a></li>
     </ul>
   </footer>
 </article>
