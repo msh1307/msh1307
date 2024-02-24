@@ -92,5 +92,17 @@ Analysis [ftpconfig] port=2121 maxusers=10000000 interface=0.0.0.0 local_mask=25
 FROM ubuntu:22.04 ENV DEBIAN_FRONTEND noninteractive RUN apt-get update &amp;amp;&amp;amp;\ apt-get install -y --no-install-recommends wget unzip gcc make libc6-dev gnutls-dev uuid RUN mkdir -p /server/data/ &amp;amp;&amp;amp;\ echo &amp;#34;hello from LightFTP&amp;#34; &amp;gt;&amp;gt; /server/data/hello.txt &amp;amp;&amp;amp;\ cd /server &amp;amp;&amp;amp;\ wget --no-check-certificate https://codeload.github.com/hfiref0x/LightFTP/zip/refs/tags/v2.2 -O LightFTP-2.2.zip &amp;amp;&amp;amp;\ unzip LightFTP-2.2.zip &amp;amp;&amp;amp;\ cd LightFTP-2.2/Source/Release &amp;amp;&amp;amp;\ make &amp;amp;&amp;amp;\ cp -a .</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://msh1307.kr/blog/jse_dropper_kimsuky/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/jse_dropper_kimsuky/</guid>
+      <description>Overview 북한 Kimsuky 위협 그룹에서 외교부를 타겟으로 악성코드를 유포했다.
+Analysis Procmon 외교부가판2021-05-07로 유포되었고, .pdf.jse의 형태를 취하고 있었다. vm안에서 실행하고 process create로 필터링해서 확인해보면, WScript.exe가 돌면서 프로세스를 생성한다.
+dll를 regsvr32.exe로 등록한다. 그냥 pdf viewer처럼 동작하면서 외교부가판 문서를 열어준다. 하지만 procmon으로 확인해보면 process create를 걸고 확인해보면 실제로는 WScript가 실행되면서 실제 악성코드를 드랍한다. regsvr32.exe로 악성 dll을 로드하고 실행 흐름이 넘어간다. 이러한 형태는 백신을 우회하기 위해 사용된다.
+Dll Extraction with open(&amp;#39;./1.jse&amp;#39;,&amp;#39;rb&amp;#39;) as f: buf = f.</description>
+    </item>
+    
   </channel>
 </rss>
