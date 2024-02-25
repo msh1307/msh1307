@@ -29,6 +29,9 @@ dll를 regsvr32.exe로 등록한다.
 regsvr32.exe로 악성 dll을 로드하고 실행 흐름이 넘어간다.
 이러한 형태는 백신을 우회하기 위해 사용된다.
 ## Dll Extraction
+![](/blog/Kimsuky_JSE_dropper/img.png)
+![](/blog/Kimsuky_JSE_dropper/img2.png)
+pdf를 열어주고 뒤에선 base64 더블 디코딩을 수행하고 실행흐름을 dll로 프록시한다.
 ```python
 with open('./1.jse','rb') as f:
     buf = f.read(0x2000000)
@@ -60,8 +63,7 @@ with open('./dropped_dll.dll','wb') as f:
     f.write(dec) # dropped pdf 
 
 ```
-추출하면 악성 dll과 pdf를 얻을 수 있다.
-
+분석한대로 추출하면 악성 dll과 pdf를 얻을 수 있다.
 ## Reverse engineering
 ## regsvr32.exe
 처음에 실행흐름을 프록시하기 위해서 regsvr32.exe를 호출했다.
