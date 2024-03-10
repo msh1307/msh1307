@@ -8,9 +8,45 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>sequilitis</title>
+      <link>https://msh1307.kr/tags/sequilitis/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/sequilitis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Serious-banking</title>
+      <link>https://msh1307.kr/tags/serious-banking/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/serious-banking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sqlite exploit</title>
+      <link>https://msh1307.kr/tags/sqlite-exploit/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/sqlite-exploit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sqlite internals</title>
+      <link>https://msh1307.kr/tags/sqlite-internals/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/sqlite-internals/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>LACTF ppplot</title>
       <link>https://msh1307.kr/tags/lactf-ppplot/</link>
-      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Mar 2024 00:00:00 +0000</pubDate>
       
       <guid>https://msh1307.kr/tags/lactf-ppplot/</guid>
       <description></description>
@@ -19,7 +55,7 @@
     <item>
       <title>LACTF2024</title>
       <link>https://msh1307.kr/tags/lactf2024/</link>
-      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Mar 2024 00:00:00 +0000</pubDate>
       
       <guid>https://msh1307.kr/tags/lactf2024/</guid>
       <description></description>
