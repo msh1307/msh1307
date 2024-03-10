@@ -1394,7 +1394,7 @@ id는 char이므로 sign extension이 일어나서 oob write가 가능하다.
     name_ptr += strlen(acc.name);
     *name_ptr = '\0';
 ```
-### Final script
+### Exploit script
 
 ```python
 from pwn import *
