@@ -4,7 +4,7 @@ dateString: March 2024
 draft: false
 tags: ["LACTF2024","LACTF ppplot"]
 weight: 30
-date: 2024-03-10
+date: 2024-03-09
 categories: ["CTF"]
 # cover:
     # image: ""
