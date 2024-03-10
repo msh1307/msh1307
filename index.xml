@@ -6,7 +6,16 @@
     <description>Recent content on msh1307</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LACTF 2024 - ppplot</title>
+      <link>https://msh1307.kr/blog/lactf_2024_ppplot/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/lactf_2024_ppplot/</guid>
+      <description>ppplot Analysis int __fastcall arith(int flag) { uint64_t *v1; // rax unsigned int res; // eax char v3; // cl int i; // [rsp+1Ch] [rbp-14h] int idx; // [rsp+20h] [rbp-10h] unsigned int v7; // [rsp+24h] [rbp-Ch] eq_obj *obj; // [rsp+28h] [rbp-8h] printf(&amp;#34;idx: &amp;#34;); idx = read_int(); if ( (unsigned int)idx &amp;lt; 128 ) { v1 = (uint64_t *)obj_list_[idx]; obj = (eq_obj *)v1; for ( i = 0; i &amp;lt;= 63; ++i ) { res = calc(obj, i - 0x20); v7 = res + 0x20; LODWORD(v1) = printf(&amp;#34;(%d, %d)\n&amp;#34;, (unsigned int)(i - 0x20), res); if ( v7 &amp;lt;= 0x3F ) { if ( flag ) v3 = &amp;#39;.</description>
+    </item>
+    
     <item>
       <title>Kimsuky malware analysis</title>
       <link>https://msh1307.kr/blog/jse_dropper_kimsuky/</link>
@@ -36,7 +45,7 @@ Dll Extraction pdf를 열어주고 뒤에선 base64 더블 디코딩을 수행�
       
       <guid>https://msh1307.kr/blog/dreamhack_kaist_postech_ctf_2023/</guid>
       <description>개인전으로 2위를 했다. 2022, 2023 kaist postech ctf 모든 포너블 챌린지를 해결했고 리버싱 챌린지 하나를 해결했다.
-sonofthec 인터넷 검색을 통해 enum을 복구한다. methods_fn[0] = (__int64)exit_with_code; methods_fn[1] = (__int64)register; methods_fn[2] = (__int64)login; methods_fn[3] = (__int64)token_status; methods_fn[4] = (__int64)update; methods_fn[5] = (__int64)logout; result = upload; methods_fn[6] = (__int64)upload; json으로 입력을 받고 그에 따른 핸들러를 호출한다.
+sonofthec Analysis 인터넷 검색을 통해 enum을 복구한다. methods_fn[0] = (__int64)exit_with_code; methods_fn[1] = (__int64)register; methods_fn[2] = (__int64)login; methods_fn[3] = (__int64)token_status; methods_fn[4] = (__int64)update; methods_fn[5] = (__int64)logout; result = upload; methods_fn[6] = (__int64)upload; json으로 입력을 받고 그에 따른 핸들러를 호출한다.
 read_secret(); args = json_object_object_get(json_obj, &amp;#34;args&amp;#34;); STR = (std::chrono::_V2::system_clock *)json_object_object_get(args, &amp;#34;username&amp;#34;); chk_string((__int64)STR); object.username = json_object_get_string(STR); usr_name_len = strlen((const char *)object.</description>
     </item>
     
