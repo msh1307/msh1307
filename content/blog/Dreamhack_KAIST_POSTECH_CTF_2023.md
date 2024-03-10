@@ -15,11 +15,12 @@ categories: ["CTF"]
 2022, 2023 kaist postech ctf 모든 포너블 챌린지를 해결했고 리버싱 챌린지 하나를 해결했다.
 
 # sonofthec
+## Analysis
 인터넷 검색을 통해 enum을 복구한다.
 ![](blog/Dreamhack_KAIST_POSTECH_CTF_2023/enum.png)
 
 ```JavaScript
- 	methods_fn[0] = (__int64)exit_with_code;
+  methods_fn[0] = (__int64)exit_with_code;
   methods_fn[1] = (__int64)register;
   methods_fn[2] = (__int64)login;
   methods_fn[3] = (__int64)token_status;
@@ -236,6 +237,7 @@ v5 = __readfsqword(0x28u);
 ![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/graph5.png)
 이때 priv_flag에 0이 대입된다.
 token status에서 jwt 토큰을 받고, 그 토큰에 대한 정보를 출력한다.
+## Exploitation
 ```JavaScript
     new_string(v15, "Company");
     v2 = sub_11F76(v1, (__int64)v15, &v10);
@@ -315,7 +317,7 @@ exception 복구 로직은 진한 초록색으로 하이라이팅되어있는 �
 ```
 bof가 있으니 rip control도 가능하다.
 canary는 int가 아닐때 write가 안되니 우회할 수 있다.
-## Exploit
+### Exploit script
 ```JavaScript
 from pwn import *
 import json
@@ -512,6 +514,7 @@ if __name__ == '__main__':
 # KAPO{js0n_C_w1th_jwt_t0ken_hs_256}
 ```
 # online stego
+## Analysis
 ```JavaScript
 @app.route('/encode', methods=['POST'])
 def post_encode():
@@ -693,9 +696,11 @@ for ( master_node = (node *)parse(a1); ; pop(master_node) )
       break;
   }
 ```
+## Exploitation
 루프를 돌면서 로직 버그가 발생하며, free되면서 chunk_payload + 0x0에는 next freed 청크가 들어가기 때문에, 유저가 다음 노드를 조작할 수 있게 된다.
 노드가 적다면, DFB를 트리거할 수 있지만, glibc 2.27의 검증 때문에 불가하다.
 노드를 너무 늘리면 결국 singly linked list 형태로 bin에 쌓여서 NULL로 끝나게 되고, 순회하기 충분치 않아 null pointer dereference가 발생하여 DOS로 끝난다.
+처음부터 top chunk를 덮으면 원하는 메모리 할당이 가능해진다.
 ```JavaScript
   malloc(2 * (__int16)*l_ptr);                  // sign extension
   if ( v2 )                                     // uninitiaized stack var
@@ -712,7 +717,7 @@ for ( master_node = (node *)parse(a1); ; pop(master_node) )
   recover(s->msg, r, (char *)p_secret_msg, secret_msg_length);
 ```
 이후 해독을 진행한다.
-## Exploit
+### Exploit script
 ```JavaScript
 from pwn import *
 def calc_crc(chunk:bytes) -> int:
@@ -826,6 +831,7 @@ heap overflow로 size를 덮어서 검증을 우회하고, 0xffff까지의 입�
 0xffff의 입력은 page 단위로 올라가기 충분하며, got에 접근할 수 있다.
 그걸 이용해 exit got를 덮는다.
 # Aespropective
+## Analysis
 ```JavaScript
   	print_menu();
     std::istream::operator>>((int64_t)&std::cin, (int64_t)sel);
@@ -921,6 +927,7 @@ v6 = __readfsqword(0x28u);
 }                                               // do keyscheduling
 ```
 이런식으로 처음에 round key들을 미리 계산한다.
+## Exploitation
 ```JavaScript
 unsigned __int64 v6; // [rsp+28h] [rbp-8h]
   v6 = __readfsqword(0x28u);
@@ -1018,7 +1025,7 @@ std::istream::operator>>((int64_t)&std::cin, (int64_t)&len);
 ```
 여기서 freed chunk 대해서 reclaim이 가능하다.
 또한 잠재적인 UAF가 발생할 수 있다.
-## Exploit
+### Exploit script
 ```JavaScript
 '''
 1) AES256 Vulnerable OoB READ while initializing Key. 
@@ -1139,6 +1146,7 @@ p.interactive()
 double free를 이용해서 AES_object + 0x0에 위치한 vtable을 dummy vtable로 수정하고 encrypt를 호출해 plain text를 노출시켜서 메모리 릭을 할 수 있다.
 이후 stdout을 릭하고 이를 덮어서 FSOP를 했다.
 # Lor - Diablo (pwn) & LoR - mechagolem (rev)
+## Analysis
 ![](/blog/Dreamhack_KAIST_POSTECH_CTF_2023/ida_decomp.png)
 리버싱 겸 포너블이였다.
 먼저 디스어셈블러를 짜고 편의기능을 추가해서 분석을 시도했다.
@@ -1656,6 +1664,7 @@ chains ready
 0x34785168: rdx = 0 ; r12 = 4294967295
 ```
 이런식으로 결과가 출력된다.
+## Rev sol
 ```JavaScript
 0x34788db8: rdx = 880315912 ; r12 = 0
 0x34788dd0: if true -> rax = 0x34788e08 else -> rax = 0x3478a218
@@ -1774,7 +1783,7 @@ chains ready
 0x347893b8: sys_write(1, 0x5576599b6080, 1) // "\n"
 ```
 리버싱같은 경우에는 마지막에 검증 로직이 한글자씩 박혀있어서 이를 연산하면 구할 수 있다.
-## Rev sol
+### Rev sol script
 ```JavaScript
 def encode(input):
     output = ''
@@ -1859,7 +1868,7 @@ for i in FLAG:
     print(chr(i),end='')
 # POKA{ok_now_open_the_gate_and_kill_the_diablo}
 ```
-## Exploit
+## Exploitation
 ```JavaScript
 0x347853c0: rsp = rdx // rsp = main+0x70 // back to menu
 -------- print() ---------
@@ -1935,6 +1944,7 @@ stack[idx]에 대한 검증이 미흡해 OoB가 가능하다.
 이러한 가젯들이 존재했는데, 이때 rdx는 나중에 대입된다.
 그러면 rdx 쪽 instruction을 건너뛰면, rdx는 잠재적으로 조작될 수 있다.
 이를 이용해 .rodata 섹션부터 쭉 메모리를 덤프해서 leak을 달성할 수 있다.
+### Exploit script
 ```JavaScript
 from pwn import *
 import tqdm
@@ -1982,6 +1992,7 @@ p.interactive()
 # POKA{now_you_are_the_only_diablo!!rule_the_world}
 ```
 # Broken Dahun's Heart
+## Analysis
 ```JavaScript
   setvbuf(stdout, 0LL, 2, 0LL);
   print_hi();
@@ -2050,6 +2061,7 @@ std::ostream::operator<<(v4, &std::endl<char,std::char_traits<char>>);
   return __readfsqword(0x28u) ^ v8;
 }                                               // get
 ```
+## Exploitation
 ```JavaScript
 std::ostream::operator<<(v2, &std::endl<char,std::char_traits<char>>);
   }
@@ -2125,7 +2137,7 @@ memory leak이 가능하며 money는 unsigned 비교를 거친다.
 ```
 4바이트 정도는 충분히 bruteforce로 뚫을만하다.
 하지만 charming을 증가시키려 앞선 random들을 뚫으려면 300초안에 불가능하다.
-## Exploit
+### Exploit script
 ```JavaScript
 # 1) srand seed prediction is possible. cuz it is only 2 bytes long.
 # 2) info leak is possible u can get the base of binary, stack
@@ -2301,6 +2313,7 @@ p.interactive()
 gamestep을 덮고, 마지막에 SIGSEGV를 내주면 handler가 호출되면서 임의 주소에 대한 호출 primitive를 만들 수 있다.
 미리 OoB addition으로 함수 포인터 주소를 만들고 idx를 변조해 임의 주소에 대한 호출을 통해 shell을 획득한다.
 # Avatar: Crude Shadow
+## Analysis
 ```JavaScript
 push_shadow(&shadow_sp, shadow_stack);
   setup();
@@ -2341,8 +2354,9 @@ push_shadow(&shadow_sp, shadow_stack);
 }
 ```
 shadow stack이 구현되어있다.
-bof도 대놓고 준다.
-## Exploit
+## Exploitation
+bof를 대놓고 준다.
+### Exploit script
 ```JavaScript
 from pwn import *
 sla = lambda x,y :p.sendlineafter(x,y)

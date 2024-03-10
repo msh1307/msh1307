@@ -1559,7 +1559,7 @@ SOCKET create_datasocket(PFTPCONTEXT context)
 ```
 PASSIVE MODE로 세팅해주고, 서버가 제공하는 포트에 접속해서 데이터를 받아주면 된다.
 
-
+### Exploit script
 ```python
 from pwn import *
 
