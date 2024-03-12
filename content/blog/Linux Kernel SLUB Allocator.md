@@ -1,6 +1,6 @@
 ---
 title: "Linux kernel SLUB allocator"
-dateString: January 2024
+dateString: March 2024
 draft: false
 tags: ["kernel slub", "kernel slub allocator", "Linux kernel"]
 weight: 30
