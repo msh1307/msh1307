@@ -6,7 +6,25 @@
     <description>Recent content in Categories on msh1307</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Kernel</title>
+      <link>https://msh1307.kr/categories/linux-kernel/</link>
+      <pubDate>Tue, 12 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/categories/linux-kernel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notes</title>
+      <link>https://msh1307.kr/categories/notes/</link>
+      <pubDate>Tue, 12 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/categories/notes/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>CTF</title>
       <link>https://msh1307.kr/categories/ctf/</link>
@@ -26,15 +44,6 @@
     </item>
     
     <item>
-      <title>Linux Kernel</title>
-      <link>https://msh1307.kr/categories/linux-kernel/</link>
-      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://msh1307.kr/categories/linux-kernel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Malware</title>
       <link>https://msh1307.kr/categories/malware/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
@@ -49,15 +58,6 @@
       <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://msh1307.kr/categories/etc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Notes</title>
-      <link>https://msh1307.kr/categories/notes/</link>
-      <pubDate>Fri, 20 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://msh1307.kr/categories/notes/</guid>
       <description></description>
     </item>
     
