@@ -5,7 +5,7 @@ draft: false
 tags: ["kernel slub", "kernel slub allocator", "Linux kernel"]
 weight: 30
 date: 2024-03-13
-categories: ["Linux Kernel"]
+categories: ["Notes", "Linux Kernel"]
 ---
 # SLUB Allocator
 Userland에선 ptmalloc2가 있는 반면, Kernelland에선 SLUB이 있다.
