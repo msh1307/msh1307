@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Linux kernel on msh1307</title>
-    <link>https://msh1307.kr/tags/linux-kernel/</link>
-    <description>Recent content in Linux kernel on msh1307</description>
+    <title>Linux Kernel on msh1307</title>
+    <link>https://msh1307.kr/categories/linux-kernel/</link>
+    <description>Recent content in Linux Kernel on msh1307</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/tags/linux-kernel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/categories/linux-kernel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2022-1015 Linux kernel netfilter</title>
       <link>https://msh1307.kr/blog/cve-2022-1015-linux-kernel-netfilter/</link>
