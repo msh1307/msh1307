@@ -4,7 +4,7 @@ dateString: March 2024
 draft: false
 tags: ["kernel slub", "kernel slub allocator", "Linux kernel"]
 weight: 30
-date: 2024-03-13
+date: 2024-03-12
 categories: ["Notes", "Linux Kernel"]
 ---
 # SLUB Allocator
