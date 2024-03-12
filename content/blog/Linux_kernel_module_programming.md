@@ -6,7 +6,7 @@ draft: false
 tags: ["kernel module programming", "Linux kernel module", "Linux kernel"]
 weight: 30
 date: 2023-01-20
-categories: ["Notes"]
+categories: ["Notes", "Linux Kernel"]
 # cover:
     # image: ""
 ---
@@ -157,8 +157,16 @@ make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 clean:
 make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 ```
+```
+make -j `nproc을을
+make modules
+make modules_install INSTALL_MOD_PATH=../../
+```
+커널 빌드할때 modules_install을 해주고 얻은 경로를 -C로 넘겨주면 원하는 커널 버전에 맞게 커널 모듈을 빌드할 수 있다.
+
 all과 clean은 단순 사용자의 편의를 위해 추가되었다고 볼 수 있다.
 make로 컴파일을 하면, `.o`가 대체된 `.ko` 확장자를 가진 파일이 생긴다. 
+
 
 `insmod`를 통해 해당 모듈을 적재할 수 있고, `rmmod`를 통해 제거할 수 있다.
 `/var/log/messages`를 살펴보면, hello world 로그가 찍힌 것을 확인할 수 있다.
