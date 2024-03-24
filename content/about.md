@@ -19,6 +19,7 @@ showToc: false
 
 ## Awards
 ---
+- Whitehat 10, Best of the Best (₩3,000,000)
 - 2nd, 선린 고등해커 페스티벌 2023 (Team 냥코)
 - 2nd, Dreamhack KAPO, KAIST-POSTECH CTF 2023
 - 1st, ABB CTF 2023 (₩1,000,000) (Team 냥코대전쟁)
