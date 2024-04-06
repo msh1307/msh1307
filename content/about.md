@@ -20,6 +20,7 @@ showToc: false
 ## Awards
 ---
 > 2024
+> - 1st, Hspace Cyberwar pwn (₩150,000)
 > - Whitehat 10, Best of the Best (₩3,000,000)
 
 > 2023
