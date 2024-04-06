@@ -20,8 +20,8 @@ showToc: false
 ## Awards
 ---
 > 2024
-> - 1st, Hspace Cyberwar pwn (₩150,000)
 > - Whitehat 10, Best of the Best (₩3,000,000)
+> - 1st, Hspace Cyberwar pwn (₩150,000)
 
 > 2023
 > - 2nd, 선린 고등해커 페스티벌 2023 (Team 냥코)
@@ -34,7 +34,7 @@ showToc: false
 > - 3rd, KOSPO CTF 2023 (₩500,000) (Team cats save the world)
 > - 3rd, CCE, Cyber Conflict Exercise Junior 2023 (₩1,000,000) (Team 가끔씩 툭하고 어셈블리어로 부끄러워하는 옆자리의 서현 군)
 > - 2nd, JBU CTF 2023 (₩100,000) (Team 달)
-> - Finalist, Codegate Junior 2023
+> - 8th, Codegate Junior 2023
 > - 1st, 선린 모의해킹방어대회 2023
 
 > 2022
@@ -43,8 +43,8 @@ showToc: false
 > - 2nd, Cyber Guardians CTF 2022
 > - 3rd, LOGCON CTF 2022
 > - 4th, Dreamhack Christmas CTF 2022
-> - Finalist, Whitehat Contest Junior 2022 
-> - Finalist, CCE, Cyber Conflict Exercise Junior 2022
+> - 5th, Whitehat Contest Junior 2022 
+> - 5th, CCE, Cyber Conflict Exercise Junior 2022
 > - 한림장학재단 장학생 선발 (₩1,000,000)
 
 > 2021
