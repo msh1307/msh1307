@@ -16,10 +16,11 @@ showToc: false
 - 현대오토에버 화이트해커 양성교육 (2022.07 ~ 2022.11)
 - KITRI BoB 12th Vulnerability Analysis (2023.07 ~ 2024.03)
 
-
-## Awards
+## Contests
 ---
 > 2024
+> - 6th, DEFCON 2024 Quals (Team Cold Fusion)
+> - 7th, LINE CTF 2024 (Team Cold Fusion)
 > - Whitehat 10, Best of the Best (₩3,000,000)
 > - 1st, Hspace Cyberwar pwn (₩150,000)
 
@@ -29,7 +30,7 @@ showToc: false
 > - 1st, ABB CTF 2023 (₩1,000,000) (Team 냥코대전쟁)
 > - 1st, Cyber Guardians CTF 2023 (Team 냥코대전쟁)
 > - 2nd, WITHCON, Whitehat Contest Junior 2023 (₩4,000,000) (Team 뿡빵띠)
-> - 3rd, WACON, Whitehat Attack Contest Junior 2023 (₩2,000,000) (Team 옆집 서현이 때문에 어느샌가 블랙해커로 타락한 사연)
+> - 3rd, WACON, Whitehat Attack Contest Junior 2023 (₩2,000,000) (Team 옆집 서현이 때문에 어느샌가 블랙해커로 타락한 사 연)
 > - 4th, YISF CTF 2023 (₩500,000)
 > - 3rd, KOSPO CTF 2023 (₩500,000) (Team cats save the world)
 > - 3rd, CCE, Cyber Conflict Exercise Junior 2023 (₩1,000,000) (Team 가끔씩 툭하고 어셈블리어로 부끄러워하는 옆자리의 서현 군)
@@ -43,7 +44,7 @@ showToc: false
 > - 2nd, Cyber Guardians CTF 2022
 > - 3rd, LOGCON CTF 2022
 > - 4th, Dreamhack Christmas CTF 2022
-> - 5th, Whitehat Contest Junior 2022 
+> - 5th, Whitehat Contest Junior 2022
 > - 5th, CCE, Cyber Conflict Exercise Junior 2022
 > - 한림장학재단 장학생 선발 (₩1,000,000)
 
