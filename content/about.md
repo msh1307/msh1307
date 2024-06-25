@@ -16,9 +16,10 @@ showToc: false
 - 현대오토에버 화이트해커 양성교육 (2022.07 ~ 2022.11)
 - KITRI BoB 12th Vulnerability Analysis (2023.07 ~ 2024.03)
 
-## Contests
+## Activity
 ---
 > 2024
+> - 18th, Google CTF 2024 (Team Cold Fusion)
 > - 미래기술연구소 장학생 선정 (₩1,000,000)
 > - 2nd, Hspace Cyberwar pwn (₩80,000)
 > - 6th, DEFCON 2024 Quals (Team Cold Fusion)
