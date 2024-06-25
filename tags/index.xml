@@ -6,7 +6,79 @@
     <description>Recent content in Tags on msh1307</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ARM Manual</title>
+      <link>https://msh1307.kr/tags/arm-manual/</link>
+      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/arm-manual/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HITCON 2018 SuperHexagon</title>
+      <link>https://msh1307.kr/tags/hitcon-2018-superhexagon/</link>
+      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/hitcon-2018-superhexagon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hypervisor Exploit</title>
+      <link>https://msh1307.kr/tags/hypervisor-exploit/</link>
+      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/hypervisor-exploit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JIT Exploit</title>
+      <link>https://msh1307.kr/tags/jit-exploit/</link>
+      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/jit-exploit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kernel Exploit</title>
+      <link>https://msh1307.kr/tags/kernel-exploit/</link>
+      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/kernel-exploit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Secure Monitor Exploit</title>
+      <link>https://msh1307.kr/tags/secure-monitor-exploit/</link>
+      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/secure-monitor-exploit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unicornel</title>
+      <link>https://msh1307.kr/tags/unicornel/</link>
+      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/unicornel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bi0s CTF 2024</title>
+      <link>https://msh1307.kr/tags/bi0s-ctf-2024/</link>
+      <pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/tags/bi0s-ctf-2024/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>kernel slub</title>
       <link>https://msh1307.kr/tags/kernel-slub/</link>
