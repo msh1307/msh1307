@@ -9,6 +9,7 @@ categories: ["CTF"]
 # cover:
     # image: ""
 ---
+
 # UNICORNEL
 Cold Fusion 연합팀으로 Google ctf에 참여했다.
 늦잠자서 늦게 합류했는데, 이미 팀원분이 취약점을 찾아놓으셔서 어떻게 악용할지를 중점적으로 생각하고 익스플로잇을 작성해서 챌린지를 해결했다.
@@ -725,7 +726,7 @@ pid 0 : rewind - (1) -> ref count = 1
 pid 0 : rewind - (3) -> memory free
 pid 1 : map - (1) -> ref count = 1, condition bypassed 
 위 순서가 지켜지면 이 이후의 ref count가 어떻게 연산되던간에 변경되더라도 메모리 버그로 연계된다.
-![](/blog/Google_CTF_2024_Unicornel/d89b6953572baf9f700d7c18fa8a1ea4.png)
+![](/blog/Google_CTF_2024_Unicornel/0a7d4599b9270b69796146a1466290af.png)
 위 시나리오로 코드를 작성해서 성공적으로 race가 발생하면 해당 쓰레드 힙의 fd가 릭되며 쓰레드 힙 주소를 릭할 수 있다.
 ```python
 # pid 1
@@ -745,7 +746,7 @@ jne success
 ```
 그리고 위와 같이 따로 판별 로직을 추가해서 race의 성공, 실패 여부를 판별하고 이를 통해 안정적으로 메모리를 유출할 수 있다.
 
-![](/blog/Google_CTF_2024_Unicornel/cd83303613b8955d3b42cdf2bead87ba.png)
+![](/blog/Google_CTF_2024_Unicornel/c23b083d968f9edf9555ef8e1dac1dcb.png)
 위와 같은 메모리 레이아웃을 가지는데, 여기서 rwx로 매핑된 JIT page를 발견할 수 있었고, 이러한 JIT page는 자체적인 랜덤화가 적용된 것으로 보이며 성공적인 RCE를 위해서 JIT page를 타겟팅하기로 결정했다.
 ### Initial Attempt
 처음 시도했던 시나리오는 다음과 같다.
@@ -794,20 +795,20 @@ out:
 가장 매력적인 포인트는 에뮬레이팅된 시스템콜 인터페이스이다.
 
 시스템 콜 인터페이스 내부 unicorn engine의 구현중 uc_context_restore 에서 객체가 오염되었을 때 악용가능한 포인트를 찾을 수 있었다.
-![](/blog/7439550dd6dc9804f651cf0468c7d6a7.png)
-![](/blog/c50db952748214d648107d33254b9032.png)
+![](/blog/Google_CTF_2024_Unicornel/08cb4545dff6ed4b7dc1570ad694b232.png)
+![](/blog/Google_CTF_2024_Unicornel/351ecfa76e41bc678d84fb151cca9be2.png)
 context save 과정에서 동적으로 길이가 결정된다.
-![](/blog/fd1fbef06cdaedb6a4f0cea81ba86566.png)
-![](/blog/6c8e1fa63ffe91ed59b930c0fc1d05a3.png)
+![](/blog/Google_CTF_2024_Unicornel/c5ae85795567e1ee471e5bad6caeb265.png)
+![](/blog/Google_CTF_2024_Unicornel/a3324f643358726044325233e04ad485.png)
 여기서 a1 + 384는 main heap에서 할당된 unicorn 엔진의 객체이다.
 근데 여기서 a2는 보다시피 취약점이 발생한 쓰레드 힙이다.
 
 그렇다면 공격 면적을 좀 더 넓힐 수 있다.
 단순히 쓰레드 힙의 내부 객체를 조작함으로써 메인 힙에서 오버플로우를 발생시킬 수 있고 이를 통해 메인 힙의 객체를 오염시킬 수 있게 되었다.
-![](/blog/12a66277351302cb16434e5c8b404d7f.png)
+![](/blog/Google_CTF_2024_Unicornel/d822b10328d9d68d0a4544194a329a6c.png)
 cpu_exec_x86_64 내부에선 다음과 같이 함수 포인터를 호출하기에 특정 조건을 맞춰서 객체를 조작하면 위와 같이 RIP를 하이재킹 할 수 있었다.
 ## Exploit code
-![](/blog/41b4343b293d86bf53b13ada283530c9.png)
+![](/blog/Google_CTF_2024_Unicornel/d0759c7ef16b792baf3d39fa49609119.png)
 ```python
 from pwn import *
 from keystone import *
@@ -1237,5 +1238,6 @@ while True:
         pass
     it += 1
     p.close()
-```
 
+
+```
