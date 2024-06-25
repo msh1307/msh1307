@@ -19,7 +19,6 @@ showToc: false
 ## Activity
 ---
 > 2024
-> - 18th, Google CTF 2024 (Team Cold Fusion)
 > - 미래기술연구소 장학생 선정 (₩1,000,000)
 > - 2nd, Hspace Cyberwar pwn (₩80,000)
 > - 6th, DEFCON 2024 Quals (Team Cold Fusion)
