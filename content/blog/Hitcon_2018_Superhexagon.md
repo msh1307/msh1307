@@ -3,7 +3,7 @@ title: "HITCON CTF 2018 - SuperHexagon"
 dateString: June 2024
 draft: false
 tags: ["HITCON 2018 SuperHexagon","Hypervisor Exploit", "Kernel Exploit", "Secure Monitor Exploit"]
-weight: 30
+weight: 50
 date: 2024-06-25
 categories: ["CTF"]
 # cover:
