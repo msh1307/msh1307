@@ -447,7 +447,7 @@ diff -Naur '--exclude=tests' '--exclude=roms' '--exclude=capstone' '--exclude=do
 README에서 어떤식으로 flag를 얻을 수 있는지 나와있다.
 편의를 위해 모든 level 별로 flag를 읽는 함수가 정의되어있다.
   
-![](attachment/23f1facbdfa91f4017c01619b48b53ce.png)
+![](/blog/Hitcon_2018_Superhexagon/23f1facbdfa91f4017c01619b48b53ce.png)
 exploit 순서는 위와 같다.
 각 EL 마다 취약점을 찾아서 익스플로잇하는게 주요 컨셉이다.
 ## Debugging environment
@@ -812,7 +812,7 @@ Virtual address start-end              Physical address start-end             To
 ```
 ELF 바이너리 자체는 메모리에 그대로 올라가있다.
 print_flag 함수가 이미 있어서 flag 얻는것 자체는 간단하다.
-![](attachment/37528417332e26dd3ddb4d2f1a74a10b.png)
+![](/blog/Hitcon_2018_Superhexagon/37528417332e26dd3ddb4d2f1a74a10b.png)
 ## Exploit code (flag)
 ```Python
 from pwn import *
@@ -1044,7 +1044,7 @@ void Reset(void)
 위처럼 sctlr_el3 같은 레지스터에 접근하는 것을 볼 수 있다.
 시스템 레지스터 뒤에 붙은 접미사는 최소 접근 권한을 뜻한다.
 ## CPSR structure & gdbscript
-![](attachment/4e3c2094116dea72ad3cb4822b6b362b.png)
+![](/blog/Hitcon_2018_Superhexagon/4e3c2094116dea72ad3cb4822b6b362b.png)
 처음에 부팅하고 CPSR 레지스터를 확인하면 현재의 Exception level을 알 수 있다.
 위는 CPSR의 구조이다.
 이를 참고하여 cpsr을 확인하는 커맨드를 추가하는 gdbscript를 작성했다.
@@ -1098,23 +1098,23 @@ EL3h| FIQ_MASKED | COND_8
 ```
 초기 부팅시에 코드는 EL3 코드라는 것을 알 수 있다.
 ## SCTLR_ELx structure
-![](attachment/614c0e573a0fe490fca6d99bab45f918.png)
+![](/blog/Hitcon_2018_Superhexagon/614c0e573a0fe490fca6d99bab45f918.png)
 초기에 EL3로 부팅을 시작하고, 이때 virtual memory system이 활성화 되었는지 확인해야한다.
 M bit를 확인하면 된다.
-![](attachment/f28a62576fc1c8773612ae36b684f334.png)
+![](/blog/Hitcon_2018_Superhexagon/f28a62576fc1c8773612ae36b684f334.png)
 앞서 arm manual을 정리하면서 관련 내용을 다뤘다.
 arm 프로세서는 power up시에 cold reset이 수행된다.
 여기선 warm reset시 M bit가 0으로 세팅된다고 하지만, 앞서 정리한 메뉴얼에선 warm reset에서 reset되는 필드는 모두 cold reset에서도 reset된다고 설명했었다.
 그렇기에 SCTLR_EL3.M bit는 0으로 IMPLEMENTATION DEFINED 값이다.
-![](attachment/db5e56cda131c84f583ddbb15fa986ae.png)
+![](/blog/Hitcon_2018_Superhexagon/db5e56cda131c84f583ddbb15fa986ae.png)
 실제로도 0으로 세팅되어있는 것을 볼 수 있다.
 0x0 번지부터 실행될 때에는 당연하지만 가상 주소가 꺼져있음을 알 수 있다.
 ## Identifying exception handlers
 ### VBAR_ELx structure
-![](attachment/4da5ac19604f5758778b401642aae59b.png)
+![](/blog/Hitcon_2018_Superhexagon/4da5ac19604f5758778b401642aae59b.png)
 exception이 일어나면 exception vector에 등록된 handler가 호출된다.
 ### Exception vector structure
-![](attachment/46a3de22d67a2d11bc915aad8668153d.png)
+![](/blog/Hitcon_2018_Superhexagon/46a3de22d67a2d11bc915aad8668153d.png)
 0x80 align 되어있다.
 ```C
         00000010 80  ff  00  10    adr        x0,0x2000
@@ -1414,7 +1414,7 @@ FLASH에서 동작한다.
 ```
 adr로 상대 주소를 만들어낸다.
 이는 EL2의 코드이다.
-![](attachment/a4f16a9ae4af921959d47901bad9ac91.png)
+![](/blog/Hitcon_2018_Superhexagon/a4f16a9ae4af921959d47901bad9ac91.png)
 물리메모리 맵에 따라 적재된 이후 실행되었기 때문에 이러한 주소를 가지게 된다.
 여기서 EL1의 exception vector 주소는 가상 주소로 설정되어있다.
   
@@ -1479,8 +1479,8 @@ void Reset(void)
 ## TCR_ELx structure & gdbscript
 전에 정리했었던 arm manual에서 두 개의 VA ranges를 지원하기 위해 TTBR0, TTBR1를 이용한다고 했었다.
 그리고 이 두 개의 VA ranges에 대해서 각자에 TCR의 TxSz로 범위가 지정된다고 했었다.
-![](attachment/bb5055b4d20e580c83b83e57fbb7d002.png)
-![](attachment/cfc87d22c954e4102f1332aad0750d3d.png)
+![](/blog/Hitcon_2018_Superhexagon/bb5055b4d20e580c83b83e57fbb7d002.png)
+![](/blog/Hitcon_2018_Superhexagon/cfc87d22c954e4102f1332aad0750d3d.png)
 이를 기반으로 gdbscript로 파싱하는 스크립트를 작성해서 명령을 추가했다.
 ```Python
 import gdb
@@ -1506,7 +1506,7 @@ class TCR_EL1(gdb.Command):
         print('granule_bits:',granule_bits)
 TCR_EL1()
 ```
-![](attachment/a7c88574f81744bc340e00c2ba22572b.png)
+![](/blog/Hitcon_2018_Superhexagon/a7c88574f81744bc340e00c2ba22572b.png)
 이러한 범위로 이용되는 것을 확인했다.
   
 TTBR이 가리키고 있는 물리 메모리 영역을 읽어야한다.
@@ -1713,20 +1713,20 @@ TCR_EL1()
 CPSR()
 ```
 메모리 트리를 직접 확인해서 secure memory를 포함한 맵을 직접 하드코딩했다.
-![](attachment/e84a665d28fb391cbc5cc5e026d39b12.png)
+![](/blog/Hitcon_2018_Superhexagon/e84a665d28fb391cbc5cc5e026d39b12.png)
 정상적으로 secure memory를 확인할 수 있게 되었다.
 이를 이용하면 직접 다른 exception level들이 어떻게 secure memory에 적재되는지 확인할 수 있을 것이다.
 # EL1, Non-secure Kernel
 유저 애플리케이션을 익스플로잇했으니 이제 커널로의 권한 상승을 해야한다.
 bata24 gef에선 arm64에 대한 pagewalk가 지원된다.
-![](attachment/0f3e0ae338f07707cbc92b95aa10f5a9.png)
+![](/blog/Hitcon_2018_Superhexagon/0f3e0ae338f07707cbc92b95aa10f5a9.png)
 이런식으로 가상주소 매핑도 얻을 수 있다.
-![](attachment/dc92a9c33bd8f7ce2b0dab47cd40648e.png)
+![](/blog/Hitcon_2018_Superhexagon/dc92a9c33bd8f7ce2b0dab47cd40648e.png)
 VBAR을 확인하면 handler들이 보인다.. 
 
-![](attachment/46a3de22d67a2d11bc915aad8668153d.png)
+![](/blog/Hitcon_2018_Superhexagon/46a3de22d67a2d11bc915aad8668153d.png)
 system call은 synchronous 하고 lower exception level에서부터 발생한다.
-![](attachment/f886d36dd21a4f46292ec937c9c7c67e.png)
+![](/blog/Hitcon_2018_Superhexagon/f886d36dd21a4f46292ec937c9c7c67e.png)
 ```C
 void UndefinedFunction_ffffffffc000a400(void)
 {
@@ -1838,9 +1838,9 @@ void FUN_ffffffffc0008ba8(long param_1)
   
 ...
 ```
-![](attachment/897d9eab886106a9fb3854d3eeafbc71.png)
+![](/blog/Hitcon_2018_Superhexagon/897d9eab886106a9fb3854d3eeafbc71.png)
 EC field에 대해 접근하고 있다.
-![](attachment/05850d04d2bdbd1980000d9cceaf6ca5.png)
+![](/blog/Hitcon_2018_Superhexagon/05850d04d2bdbd1980000d9cceaf6ca5.png)
 딱 봐도 이 함수는 위 두 값에 대한 비교를 하는 함수인 것을 알 수 있다.
   
 ```C
@@ -1865,11 +1865,11 @@ EC field에 대해 접근하고 있다.
 }
 ```
 그리고 0xff로 마스킹되어서 처리하는 부분이 있는데, 여긴 secure world 관련 처리 로직이니 나중에 분석한다.
-![](attachment/a27a6c6b0011f9ff1c9ddc4c624e2f08.png)
+![](/blog/Hitcon_2018_Superhexagon/a27a6c6b0011f9ff1c9ddc4c624e2f08.png)
 sys_read는 위 0xffffffffc9000000을 읽는다.
 IPA는 0x3b000이며 PA는 0x9000000이다.
 여긴 UART 공간이다.
-![](attachment/4b2a63d6327f5f75dd1596be251140bf.png)
+![](/blog/Hitcon_2018_Superhexagon/4b2a63d6327f5f75dd1596be251140bf.png)
 Memory mapped io (MMIO) 방식이다.
 DMA와 함께 쓰인다.
 sys_read는 내부적으로 1 바이트씩 여기서 읽고 리턴한다.
@@ -1915,7 +1915,7 @@ sys_read는 내부적으로 1 바이트씩 여기서 읽고 리턴한다.
 처음에는 눈치를 못챘지만 모든 구현된 시스템 콜들을 분석하고 나서 다시 코드를 처음부터 봤더니 이상함을 느꼈다.
 왜냐하면 ELx에서의 가상 주소 액세스는 분명 ELx의 translation table base address를 타고 변환될텐데 x1에 대한 privileged, unprivileged 체크가 없었기 때문이다.
 다른 시스템 콜들의 경우 아래와 같이 1 단계 변환후 attribute를 비교해서 user memory인지 아닌지를 검사한다.
-![](attachment/f3932dcbcd59271f076d99aa50a41130.png)
+![](/blog/Hitcon_2018_Superhexagon/f3932dcbcd59271f076d99aa50a41130.png)
   
 ret 1 byte overwrite → print_flag
 ropper로 쭉 뽑고 보다가 0xffffffffc0009130를 쓸 수 있을 것 같아서 확인해보았다.
@@ -1926,7 +1926,7 @@ ropper로 쭉 뽑고 보다가 0xffffffffc0009130를 쓸 수 있을 것 같아�
      fffc000913c c0  03  5f  d6    ret
 ```
 삽질하다가 메뉴얼을 뒤져보니 다음과 같이 UNDEFINED로 정의되어있었다.
-![](attachment/966ec93ec69b3c16a73e85ce3659545c.png)
+![](/blog/Hitcon_2018_Superhexagon/966ec93ec69b3c16a73e85ce3659545c.png)
 handler가 SP_ELxh에서 SP_ELxt로 최대한 빨리 전환을 시도하기에 절대 쓸 수 없는 가젯이다.
 ```C
      fffc0009430 f3  53  41  a9    ldp        x19 ,x20 ,[sp, #local_10 ]
@@ -1935,7 +1935,7 @@ handler가 SP_ELxh에서 SP_ELxt로 최대한 빨리 전환을 시도하기에 �
 ```
 더 찾다가 위 가젯을 찾았다.
 sp+80에 연속적으로 쓸 수 있으니 저기부터 흐름을 두 번 연속으로 변조하면 pc 컨트롤이 가능하다.
-![](attachment/bf3dcbc5e1b2686e60a9d50861c8f7d2.png)
+![](/blog/Hitcon_2018_Superhexagon/bf3dcbc5e1b2686e60a9d50861c8f7d2.png)
 ## Exploit code (flag)
 ```Python
 from pwn import *
@@ -2045,13 +2045,13 @@ p.interactive()
 ```
 ## Gaining code execution
 Arm manual 정리하면서 page descriptor도 정리했다.
-![](attachment/89ac8cbe2ee124fd2a1b1faaf7506c84.png)
+![](/blog/Hitcon_2018_Superhexagon/89ac8cbe2ee124fd2a1b1faaf7506c84.png)
 Two VA ranges를 지원할 때 translation 과정은 stage 1과 stage 2로 나뉜다.
 VA → IPA → PA 중에 실질적으로 공격할 수 있는건 IPA까지여서 VA → IPA를 속여서 공격하는 것을 생각해볼 수 있다.
 이는 VA → IPA의 매핑 관계가 EL1의 영역에 존재하기에 가능하다.
 잘 조작해서 임의 VA에 대해서 원하는 IPA로 매핑할 수 있다면, EL0 쪽 메모리와 매핑시켜 특권 레벨에서 code execution이 가능하다.
 PAN을 확인해봤는데 PAN이 비활성화되어 있었으니 그냥 userland에 fake page table을 준비해두고 초기 코드에 TTBR에 대한 할당을 수행하는 특권 명령을 실행하는데 여기로 점프하면 임의 코드 실행을 얻을 수 있을 것 같았다.
-![](attachment/f0426c50516cf19fabe5499a8ac8153c.png)
+![](/blog/Hitcon_2018_Superhexagon/f0426c50516cf19fabe5499a8ac8153c.png)
 혹시 MMU 킨 상태에선 TTBR1에 대한 할당이 트랩을 일으킬까봐 메뉴얼을 봤더니 따로 그런 검증 로직은 없는 것으로 보인다.
 ```Python
      fffc000000c 20  20  18  d5    msr        ttbr1_el1 ,x0
@@ -2079,7 +2079,7 @@ PAN을 확인해봤는데 PAN이 비활성화되어 있었으니 그냥 userland
 >>> int(bin(0xffffffffc001e000)[2:][::-1][12:21][::-1],2)
 30
 ```
-![](attachment/9ae597d10a403510f7f9d3a4aa046a26.png)
+![](/blog/Hitcon_2018_Superhexagon/9ae597d10a403510f7f9d3a4aa046a26.png)
 0xffffffffc001e000 -> 0x1e000 -> 0x4001e000로 변환되니까 저 부분을 수정하면 된다.
   
 0x0040000000036483로 바꿔주면 미리 mmap 해놓은 유저 페이지를 실행하게 된다.
@@ -2089,12 +2089,12 @@ PTE 수정하려면 2바이트가 필요한데 read는 한번에 1바이트씩�
 그래서 저 페이지 테이블 자체를 가리키는 descriptor의 AP를 변경해서 EL0에서 RW를 만들었다.
 그리고 EL0에서 8바이트 전체를 써주는 방식으로 진행하면 될것 같았다.
 mprotect R-X를 해줘야 EL2 MMU에 변경된 execution 권한이 적용된다.
-![](attachment/36bbd4f063e15828882e79552c0a158f.png)
+![](/blog/Hitcon_2018_Superhexagon/36bbd4f063e15828882e79552c0a158f.png)
 FEAT_XNX가 비활성화 상태이다.
 page descriptor 53 bit가 res0이고 54bit가 EL0과 EL1에 대한 execution control을 담당한다.
 EL2는 물리 메모리로 접근하고 손으로 pagewalk해서 확인해보았다.
-![](attachment/cb87a472465a0d95b35b3d83dc8ae180.png)
-![](attachment/b8826cfe88662b242971135546c83f11.png)
+![](/blog/Hitcon_2018_Superhexagon/cb87a472465a0d95b35b3d83dc8ae180.png)
+![](/blog/Hitcon_2018_Superhexagon/b8826cfe88662b242971135546c83f11.png)
 mprotect r-x 안했을때 stage 2 translation의 주체인 EL2의 page table에 EL0/1 execution이 비활성화 되었음을 알 수 있다.
 bata24 gef를 이용하고 있는데 버그가 있다.
 ```Python
@@ -2243,11 +2243,11 @@ x/40xg 0xffffffffc0000000 + 0x28000  + 8*506'''
 ```
 테스트를 위해 1을 계속 찍는 쉘코드를 넣었다.
 # EL2, Virtual machine monitor
-![](attachment/d76290c15ec8a1ecf6278e71e4688965.png)
+![](/blog/Hitcon_2018_Superhexagon/d76290c15ec8a1ecf6278e71e4688965.png)
 커널까지 공격했으니 이제 hypervisor를 공격해서 vm escape를 해서 Normal world를 모두 컨트롤할 수 있도록 만들어야한다.
 원래 EL1에서 EL3로 secure monitor call을 하는것도 EL2를 거쳐서 처리되기 때문에 여기를 공격 타겟으로 잡아야한다.
 이 문제에선 Type 1 hypervisor를 채택한 구조다.
-![](attachment/4681c70db1415e5680e82da836a4e1d3.png)
+![](/blog/Hitcon_2018_Superhexagon/4681c70db1415e5680e82da836a4e1d3.png)
 만약 Type 2 구조조였다면 공격 벡터를 추가적으로 저 highvisor 부분으로도 신경을 썼어야 하지 않았을까 생각한다.
 ```Python
 ulong FUN_401003d8(long *saved_reg)
@@ -2347,7 +2347,7 @@ undefined * HVC_handler(ulong x1,ulong x2)
 애초에 쓰는게 descriptor인데 IPA가 PA에 저렇게 raw하게 영향을 주면 안된다는 것을 깨달았다.
 그리고 이 취약점을 이용하면 0x3c000보다 작은 임의 IPA에 대해 할당하고 PA를 매핑할 때 S2AP는 하위 1바이트안에 들어가니 이를 이용해 RWX 페이지를 매핑할 수 있다는 것을 알았다.
 근데 IPA는 EL1에서 임의 코드 실행을 달성한 순간부터 원하는 VA와 매핑할 수 있다.
-![](attachment/c6a0733d063d71922ba30f130677810c.png)
+![](/blog/Hitcon_2018_Superhexagon/c6a0733d063d71922ba30f130677810c.png)
 사실 익스플로잇 방식은 추가적으로 찾아봤을때 유사한것으로 보인다.
 위 그림에서 설명하는건 일종의 mitigation이긴 하다.
 EL2에서 취약점은 IPA갖고 엔트리의 플래그가 바뀌는 취약점으로 인해 위 사진과는 다르게 권한 고정이 애초에 실패한 문제가 생겼다.
@@ -2357,7 +2357,7 @@ EL2에서 취약점은 IPA갖고 엔트리의 플래그가 바뀌는 취약점�
 1) EL1에서 EL0쪽 PTE를 변조해서 특정 IPA를 가리키도록 하고 AP 01로 설정한다.
 2) hvc로 변조한 특정 IPA를 hypervisor의 handler 코드 페이지를 가리키는 PA로 세팅하고 S2AP 11로 설정한다.
 3) EL2 shellcode를 EL2 0x40102000에 복사한다.
-![](attachment/e13df9b643049373581aa1888e4a1078.png)
+![](/blog/Hitcon_2018_Superhexagon/e13df9b643049373581aa1888e4a1078.png)
 참고로 gef pagewalk가 권한을 틀리게 보여줘서 직접 손으로 pagewalk해서 확인했다.
 ## Exploit code (flag & code execution)
 ```Python
@@ -2558,7 +2558,7 @@ p.interactive()
 Normal world의 최고 exception level까진 도달했다.
 non-secure physical memory의 모든 부분이 제어 가능하다.
 이제 secure world로 넘어가야한다.
-![](attachment/00cdfe972dd80aebcd7650dc35aea770.png)
+![](/blog/Hitcon_2018_Superhexagon/00cdfe972dd80aebcd7650dc35aea770.png)
 전에 arm trustzone 관련해서 메뉴얼을 정리하면서 어떻게 trustzone이 메모리 격리를 유지하는지에 대해서 설명했었다.
 간단하게 리마인드하자면 ARM CPU는 NS 비트를 하드웨어적으로 지원해서 메모리 격리를 유지하고 캐시 라인에서도 NS를 추가하면 따로 tlb flush도 안해도 되는식으로 구현을 했다.
 ARM CPU는 SMMU를 통해 Non-secure world에서의 장치 액세스를 막아서 실질적으로 Secure world도 점거해야 중요한 장치를 공격할 수 있다.
@@ -2566,7 +2566,7 @@ ARM CPU는 SMMU를 통해 Non-secure world에서의 장치 액세스를 막아�
 그리고 분석을 더 해보니까 S-EL3는 flash에서 돌아서 수정 불가능한 메모리로써 MMIO 방식으로 동작한다.
 사실 실행되는 코드도 적어서 flash로 올려서 돌리는것도 코드 무결성을 보장하는데 되게 현명한 방법이라는 생각이 들었다.
 ## Debugging the Secure world
-![](attachment/e1c8aa4c9a7a3a73fd4680cedd07aafb.png)
+![](/blog/Hitcon_2018_Superhexagon/e1c8aa4c9a7a3a73fd4680cedd07aafb.png)
 qemu에서 32bit 디버깅을 지원하지 않는다.
 그래서 직접 빌드했다.
 github에서 v3.0.0 checkout해서 빌드하려 했더니 오류나길래 직접 공식 사이트에서 소스 코드를 받아서 빌드했다
@@ -2587,10 +2587,10 @@ static 빌드하고 싶었는데 xkbcommon 때문에 계속 실패해서 그냥 
 /home/super_hexagon/qemu-system-aarch64_debug_arm32 -nographic -machine hitcon -cpu hitcon -bios /home/super_hexagon/bios.bin -monitor /dev/null 2>/dev/null -serial stdio -s 
 ```
 화면이 프린트 안돼서 serial에 stdio 줘봤더니 잘 프린트된다.
-![](attachment/ecc4672a43444ca18696c0f270cdff4f.png)
+![](/blog/Hitcon_2018_Superhexagon/ecc4672a43444ca18696c0f270cdff4f.png)
 디버거도 ARM32로 잘 잡힌다.
 ## Analyzing the secure monitor
-![](attachment/5bb559ad0ea51c84f204aab094892d6a.png)
+![](/blog/Hitcon_2018_Superhexagon/5bb559ad0ea51c84f204aab094892d6a.png)
 이제 secure memory를 직접 봐야하기 때문에 로컬에서 디버깅을 시작했다.
 ```Python
 p = process('./local_debug.sh')
@@ -2600,7 +2600,7 @@ secure world 전환 이전에 secure memory를 볼일이 종종 있어서 로컬
   
 부팅 과정에서 가장 높은 exception level로 부팅을 시도하기에 전에 분석했었던 S-EL3의 부트로더부분으로 돌아가야한다.
 거기서 VBAR_EL3가 0x2000인 것을 얻을 수 있다.
-![](attachment/9814c10d84dabf9c854bf4b176a9677a.png)
+![](/blog/Hitcon_2018_Superhexagon/9814c10d84dabf9c854bf4b176a9677a.png)
 일단 EL2에서 S-EL3를 바로 공격하는게 가능한지 확인해봤다.
 ```C
 long * FUN_00000330(uint x0,long x1,undefined8 2,undefined8 x3)
@@ -2881,7 +2881,7 @@ void load_trustlet(byte *param_1,int size)
   ...
 ```
 위와 같은 방식으로 초기화를 했었고 TA_bin이라는 이상한 바이너리를 넘겼었다.
-![](attachment/c9c79ed8ed15d70737ce52b89dbfd0e1.png)
+![](/blog/Hitcon_2018_Superhexagon/c9c79ed8ed15d70737ce52b89dbfd0e1.png)
 ```C
 int load_key(int x,char *buf)
 {
@@ -3123,11 +3123,11 @@ world_ctx * FUN_00000330(uint x0,uint64_t x1,uint64_t x2,uint64_t x3)
 ```
 이제 호출되었을 때 어디로 가는지 확인해야할 필요가 있다.
 ### SPSR_EL3 structure & gdbscript
-![](attachment/4d39b7ba32f4b5f44407d8d686ee39c4.png)
-![](attachment/daae4d0027962451199dc7bcf06de81a.png)
+![](/blog/Hitcon_2018_Superhexagon/4d39b7ba32f4b5f44407d8d686ee39c4.png)
+![](/blog/Hitcon_2018_Superhexagon/daae4d0027962451199dc7bcf06de81a.png)
 AArch32에서 exception이 발생했을 때 M bits 인코딩은 위와 같다.
-![](attachment/07f2dae481a603f51efbe843681d5667.png)
-![](attachment/b59dc51b1a23cd667e025f3141869539.png)
+![](/blog/Hitcon_2018_Superhexagon/07f2dae481a603f51efbe843681d5667.png)
+![](/blog/Hitcon_2018_Superhexagon/b59dc51b1a23cd667e025f3141869539.png)
 AArch64 exception이 발생했을 때 M bits 인코딩은 위와 같다.
 ```Python
 import gdb
@@ -3262,14 +3262,14 @@ CPSR()
 SPSR_EL3()
 ```
 기존 cpsr도 같이 수정했다.
-![](attachment/1053b8224ac974f745e085a7978fc258.png)
+![](/blog/Hitcon_2018_Superhexagon/1053b8224ac974f745e085a7978fc258.png)
 ### AArch32 PE modes
 근데 mode가 약간 생소하다.
-![](attachment/cf8ff4ac90a9a7be9a6b9d2330073709.png)
-![](attachment/29573e26e1e2c0ae06c50a30d87df00b.png)
+![](/blog/Hitcon_2018_Superhexagon/cf8ff4ac90a9a7be9a6b9d2330073709.png)
+![](/blog/Hitcon_2018_Superhexagon/29573e26e1e2c0ae06c50a30d87df00b.png)
 그냥 이름만 있어보이게 나눠놓고 결국 결론은 S-EL1이다.
 ### Diving into BL1 again
-![](attachment/643d7f7884b1853da9f0537f822dc09e.png)
+![](/blog/Hitcon_2018_Superhexagon/643d7f7884b1853da9f0537f822dc09e.png)
 S-EL1을 보다가 못 읽겠어서 이번엔 aarch32 manual을 찾아서 읽어봤다.
 그랬더니 이미 정의된 주소로 핸들링을 수행한다고 한다.
 Secure VBAR을 확인해야한다.
@@ -3300,7 +3300,7 @@ Secure VBAR을 확인해야한다.
         00001528 fe  ff  ff  ea    b          LAB_00001528
 ```
 aarch64와 다르게 생소하게 접근한다.
-![](attachment/340843d4ea3252d12bf8101be370fa9b.png)
+![](/blog/Hitcon_2018_Superhexagon/340843d4ea3252d12bf8101be370fa9b.png)
 읽는 법은 위처럼 읽으면 된다.
   
 근데 여기서 VBAR 인자가 뭔지 잘 모르겠다
@@ -3365,7 +3365,7 @@ bool FUN_0000025c(void)
 ```
 0xe000000가 보이는거 보니 boot argument 같은 것으로 보인다.
 BL1에서 0x68 만큼 copy한 데이터에 속한다.
-![](attachment/577f1089824846bcb526437568648b71.png)
+![](/blog/Hitcon_2018_Superhexagon/577f1089824846bcb526437568648b71.png)
 ```C
 void FUN_00000120(undefined *param_1,int param_2,undefined8 param_3,undefined8 param_4,
                  undefined8 param_5,undefined8 param_6,undefined4 *param_7)
@@ -3469,8 +3469,8 @@ FUN_00000c90 내부적으로 시스템 레지스터 세팅하고 eret한다.
 대충 어떤식으로 world switch가 일어나고 어디를 분석해야할지 알게 되었다.
 ## Secure world pagewalk gdbscript
 qemu에서 system registers를 보여주는데 오류가 있어서 직접 pagewalk를 하는 스크립트를 따로 작성했다.
-![](attachment/669376547659f5485e8f9dd5bde3f8cb.png)
-![](attachment/4c79781ac982b5ca8673dc31740d6f9e.png)
+![](/blog/Hitcon_2018_Superhexagon/669376547659f5485e8f9dd5bde3f8cb.png)
+![](/blog/Hitcon_2018_Superhexagon/4c79781ac982b5ca8673dc31740d6f9e.png)
 메뉴얼은 적당히 보고 넘기면서 구현했다.
 위 AP\[2:1\] 모델을 보고 권한을 맞췄다.
 ```C
@@ -3570,7 +3570,7 @@ for idx,i in enumerate(next_table):
             bits |= ((j*2+1) << 12)
             print(hex(bits),hex(((v1>>12)<<12)&(2**36-1)),PT,f(v1))
 ```
-![](attachment/b917a25c82e957aba8851cb91e18edc5.png)
+![](/blog/Hitcon_2018_Superhexagon/b917a25c82e957aba8851cb91e18edc5.png)
 Exception vector tables를 포함한 text 부분이 PL1에서도 Read-Only 인 것을 보니 구현이 틀리지는 않았을 것 같다.
 ## Reverse engineering S-EL1
 VBAR은 0xe400000 이다.
@@ -3646,16 +3646,16 @@ void FUN_00001698(void)
         000016f0 ff  ff  ff  ea    b          LAB_000016f4
 ```
 mcrr은 register 두 개를 쓰는거라 64-bit 시스템 레지스터에 쓴다고 한다.
-![](attachment/4d97b376cb5b048f419e1c220f3abebf.png)
-![](attachment/179ec0a9aa2fb5fdb0c6325a71daad30.png)
+![](/blog/Hitcon_2018_Superhexagon/4d97b376cb5b048f419e1c220f3abebf.png)
+![](/blog/Hitcon_2018_Superhexagon/179ec0a9aa2fb5fdb0c6325a71daad30.png)
 이런식의 인코딩 차이가 있다.
 드디어 CRm만 가지고 어떻게 표를 보는지 알게 되었다.
   
 bios.bin을 FEFFFFEA로 패치해서 무한루프를 만들어서 원하는 곳을 디버깅할 수 있다.
 Normal world에 대한 디버깅 능력을 상실했으니 무조건 secure world에서 멈춰야한다.
-![](attachment/ace6c929cddcc14726be50b664d52ce9.png)
-![](attachment/bc5fe1f74ab941ea69bec2a4011b40aa.png)
-![](attachment/dfcec7f41fc8523ef2d70b8202a127b9.png)
+![](/blog/Hitcon_2018_Superhexagon/ace6c929cddcc14726be50b664d52ce9.png)
+![](/blog/Hitcon_2018_Superhexagon/bc5fe1f74ab941ea69bec2a4011b40aa.png)
+![](/blog/Hitcon_2018_Superhexagon/dfcec7f41fc8523ef2d70b8202a127b9.png)
 디버거가 시스템 레지스터를 제대로 표현하지 못한다.
 ```C
 void FUN_0e401698(void)
@@ -3703,19 +3703,19 @@ void FUN_0e401698(void)
 }
 ```
 천천히 보니 대충 어떤 행동을 하고 있는지 알 것 같다.
-![](attachment/87532572428032bf14ca6270982aa914.png)
+![](/blog/Hitcon_2018_Superhexagon/87532572428032bf14ca6270982aa914.png)
 MMU를 키고 그냥 00으로 밀려있다.
-![](attachment/7d6622457a7f27860ccf39a922d9cabc.png)
+![](/blog/Hitcon_2018_Superhexagon/7d6622457a7f27860ccf39a922d9cabc.png)
 많이 따라갈 필요도 없이 손으로 해도 될 것같다.
-![](attachment/2bbfb57af26557baa29be290ed5e6849.png)
+![](/blog/Hitcon_2018_Superhexagon/2bbfb57af26557baa29be290ed5e6849.png)
 구조도 별로 다른건 없어보인다.
 VBAR는 VA 0x8000040 이지만, PA로 변환해보면 0xe400040이다.
-![](attachment/4721170053930c04d3ba1d2683062b3c.png)
+![](/blog/Hitcon_2018_Superhexagon/4721170053930c04d3ba1d2683062b3c.png)
 MMU가 한번 활성화되면 이후엔 디버깅이 안되고 그냥 알아서 넘어가버리기 때문에 MMU bit 활성화 이후를 디버깅할 수 없다.
 그래서 vector table entry에 무한 루프 걸어놓고 마저 디버깅을 시도했다.
-![](attachment/b028e6ec5300e84339303cb8ed0a2c88.png)
+![](/blog/Hitcon_2018_Superhexagon/b028e6ec5300e84339303cb8ed0a2c88.png)
 Prefetch Abort에 잡히는 걸 보니 예상대로 그냥 거기서 에러나서 뛰는 것 같다.
-![](attachment/2afe6941fa997b6d5d55061db764467b.png)
+![](/blog/Hitcon_2018_Superhexagon/2afe6941fa997b6d5d55061db764467b.png)
 Abort라서 그런지 mode도 Abort로 바뀐다.
 cps로 다시 supervisor mode로 변경해서 마저 TEE os initialization을 수행한다.
 ```C
@@ -3763,7 +3763,7 @@ thumb로 모드를 변경한다.
 ```
 그리고 다시 smc를 불러서 secure monitor로 돌아간다.
 의사코드만 읽다가 위 어셈블리 스니펫을 놓쳤었는데, 이거 때문에 하루종일 삽질했다.
-![](attachment/1755d65849477888fa44cd2fd30caeb7.png)
+![](/blog/Hitcon_2018_Superhexagon/1755d65849477888fa44cd2fd30caeb7.png)
 다시 secure monitor로 돌아가면 r1을 저장하며, TEE OS initialized 문구를 출력한다
 EL0에서 TA_Bin을 secure world로 업로드했었는데, 거기를 처리하는 로직을 찾아야한다.
 secure monitor 분석 결과를 기반으로 처리 로직은 vector_table + 0x20 를 따라가면 나온다는 것을알고 있다.
@@ -3961,7 +3961,7 @@ print(hex(0xff8000), hex(0x8000))
 ```
 위와 같이 매핑한다.
 권한은 아래와 같다.
-![](attachment/a0dc084795134a2ff9940e0df33e83df.png)
+![](/blog/Hitcon_2018_Superhexagon/a0dc084795134a2ff9940e0df33e83df.png)
 0x24만큼 헤더가 짤린 SEL0.bin을 기드라에 로드해서 세그먼트 별로 잘라서 로드해주고 분석하면 된다.
 다음은 tci call시 호출되는 함수다.
 ```C
@@ -4247,7 +4247,7 @@ uint32_t * malloc(uint sz)
 }
 ```
 interger overflow가 발생한다.
-![](attachment/4110f4f470742e21d147ea0cf3435c37.png)
+![](/blog/Hitcon_2018_Superhexagon/4110f4f470742e21d147ea0cf3435c37.png)
 aarch64 디버깅을 할 때 secure EL0를 직접적으로 디버깅은 불가능하지만 이렇게 간접적으로 메모리를 확인하는 것은 가능하다.
 세 개의 청크를 할당한 모습이다.
 취약점을 트리거하면 size가 너무 커져서 무조건 SIGSEGV가 나서 abort exception handler로 진입한다.
@@ -4311,7 +4311,7 @@ void FUN_00001000(undefined4 param_1)
   ...
 ```
 다시 원래 context로 복원하여 계속 실행되는 특징이 있다.
-![](attachment/a0dc084795134a2ff9940e0df33e83df.png)
+![](/blog/Hitcon_2018_Superhexagon/a0dc084795134a2ff9940e0df33e83df.png)
 전에 직접 제작한 secure world에서의 pagewalk 결과를 보면, 매핑 자체가 PL0에서 RWX 임을 알 수 있다.
 다음과 같은 malloc 내부 로직을 이용하여 4 bytes aaw를 달성한다.
 ```C
@@ -4331,7 +4331,7 @@ Arena.chunk_ptr을 변조하면 SEL0의 code segment에 대한 청크 할당이 
 이를 이용해 SEL0의 엔트리를 변조해서 임의 쉘코드 실행을 달성한다.
   
 내부적으로 이미 할당된 청크에 대해서는 free이후 다시 할당해서 reclaim이 가능하다.
-![](attachment/f512d95c57426d767060cf08fcf02c4b.png)
+![](/blog/Hitcon_2018_Superhexagon/f512d95c57426d767060cf08fcf02c4b.png)
 freelist에 역순으로 size 더 크게해서 chunk free하고 취약점을 트리거해서 다음과 같이 메타데이터를 덮었다.
 이후 Arena 구조체의 entry를 4 bytes aaw primitive를 이용해 덮고, freelist에 적합한 size를 초과한 크기를 할당하면 원하는 S-EL0의 .text 영역에 read/write가 가능해진다.
   
@@ -4342,7 +4342,7 @@ exploit 전략은 다음과 같다.
 4) size를 0x300 정도로 설정해서 next chunk에 write 연산 sigsegv 방지, 돌고 있는 memcpy 코드 수정 방지 & 할당된 청크에 쉘 코드 작성.
 5) 시스템 레지스터를 읽고 world shared memory에 flag write하고 software interrupt 0를 발생시켜 normal world로 복귀해서 플래그 출력.
 취약점 자체는 간단해서 금방 찾았는데 malloc 내부 로직에서 자꾸 꼬여서 익스가 힘들었다.
-![](attachment/a096b3c429e31b14826b3bcfb3af9a84.png)
+![](/blog/Hitcon_2018_Superhexagon/a096b3c429e31b14826b3bcfb3af9a84.png)
 ## Exploit code (code execution & flag)
 ```Python
 from pwn import *
@@ -4709,7 +4709,7 @@ sleep(0.1)
 p.interactive()
 ```
 # S-EL1, Secure kernel
-![](attachment/23f1facbdfa91f4017c01619b48b53ce.png)
+![](/blog/Hitcon_2018_Superhexagon/23f1facbdfa91f4017c01619b48b53ce.png)
 이제 S-EL1에서 Secure world의 물리 메모리까지 마음대로 수정할 수 있으면 S-EL3를 공격할 수 있다.
 실질적으로 Secure world는 EL0&1 regime가 singe VA range 방식을 취하고 있기에 좀 더 구조적으로 취약하다.
 S-EL1 자체는 S-EL0 뿐만 아니라 EL2에서도 간접적으로 상호 작용이 가능해 공격 벡터가 될 수 있다.
@@ -4757,7 +4757,7 @@ int FUN_08000724(uint r1,uint r2)
 ```
 Secure physical address에 대한 접근은 제한된다.
 그런데 약간의 문제가 발생할 여지가 있다.
-![](attachment/aca5811777159c1cb95140ec67cd08a3.png)
+![](/blog/Hitcon_2018_Superhexagon/aca5811777159c1cb95140ec67cd08a3.png)
 권한 설정에 문제가 존재한다.
 ```C
 undefined4 FUN_080004c2(uint VA,int sz)
@@ -5101,7 +5101,7 @@ void FUN_08000b62(int param_1)
   return;
 }
 ```
-![](attachment/d9f62afaa84b05ca56f701be3d3cfa8b.png)
+![](/blog/Hitcon_2018_Superhexagon/d9f62afaa84b05ca56f701be3d3cfa8b.png)
 복원한 구조체의 모습이다.
 ```C
 void FUN_08000ae0(void)
@@ -5230,7 +5230,7 @@ TCI_Data += p32(0) + p32(0x31) + p32(0x1670+8-0x10) + p32(0x0100060-0x8) + b'B' 
         cmp x8, #{len(SEL0_shellcode)}
         bne loop_copy
 ```
-![](attachment/35cf643bbccb2cd07961d483d2d59979.png)
+![](/blog/Hitcon_2018_Superhexagon/35cf643bbccb2cd07961d483d2d59979.png)
 Exploit 시나리오 자체는 전과 비슷하다.
 똑같이 secure에서 flag를 가져오고, 다시 Normal world로 복귀해서 flag를 출력한다.
 ## Exploit code (code execution & flag)
@@ -5658,7 +5658,7 @@ p.interactive()
 S-EL3의 일부 rw가 필요한 영역은 RAM에 적재된다.
 그런데 context switching 시에 보호해야 할 시스템 레지스터들이 RAM에 올라와있다.
 이런 구조는 절대 격리가 유지될 수 있는 구조가 아니다.
-![](attachment/7d9fcba3fcaf7667027c403d9b284076.png)
+![](/blog/Hitcon_2018_Superhexagon/7d9fcba3fcaf7667027c403d9b284076.png)
 생각해낸 익스플로잇 시나리오는 다음과 같다.
 1. S-EL1 PTE 조작 → 쉘 코드 작성.
 2. S-EL1 PTE 조작 → S-EL3 PTE 조작 → 쉘 코드 페이지 매핑.
@@ -5699,11 +5699,11 @@ static bool mmu_lookup1(CPUState *cpu, MMULookupPageData *data,
 }
 ```
 다음과 같이 hit이면 그냥 저장된 인덱스에 맞춰서 바로 리턴하는 것을 확인할 수 있다.
-![](attachment/1fd5a4f6f21cfa381a0f09b64430680b.png)
-![](attachment/43fadf48c377fbf274c369c10f9eb105.png)
+![](/blog/Hitcon_2018_Superhexagon/1fd5a4f6f21cfa381a0f09b64430680b.png)
+![](/blog/Hitcon_2018_Superhexagon/43fadf48c377fbf274c369c10f9eb105.png)
 쉘 코드 길이를 늘리기 위해선 그냥 여기서 fault 내고 더 낮은 exception vector offset으로 뛰면 0xd00 주변으로 뛸 수 있다.
 그걸 이용해서 0xd00 주변에 쉘 코드를 배치한다.
-![](attachment/fd750aecd7c7b5e5a761b7f005a4e6fe.png)
+![](/blog/Hitcon_2018_Superhexagon/fd750aecd7c7b5e5a761b7f005a4e6fe.png)
 ## Exploit code (code execution & flag)
 ```Python
 from pwn import *
