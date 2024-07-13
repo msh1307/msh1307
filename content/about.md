@@ -8,6 +8,13 @@ showToc: false
 # Profile
 ---
 맹서현 / 2006.02.17
+## Organization
+- Sunrin Internet High School InfoSec 117th
+- Layer7 Hacking Club
+- KITRI BoB 12th Vulnerability Analysis 
+- cat :flag_kr: CTF team
+- DeadSec CTF team
+
 
 ## Education
 ---
@@ -26,6 +33,7 @@ showToc: false
 > - 7th, LINE CTF 2024 (Team Cold Fusion)
 > - Whitehat 10, Best of the Best (₩3,000,000)
 > - 1st, Hspace Cyberwar pwn (₩160,000)
+> - 1st, Cyber Apocalypse 2024: Hacker Royale (Team Friendly Maltese Citizens)
 
 > 2023
 > - 2nd, 선린 고등해커 페스티벌 2023 (Team 냥코)
