@@ -9,12 +9,12 @@ showToc: false
 ---
 맹서현 / 2006.02.17
 ## Organization
+---
 - Sunrin Internet High School InfoSec 117th
 - Layer7 Hacking Club
 - KITRI BoB 12th Vulnerability Analysis 
 - cat :flag_kr: CTF team
 - DeadSec CTF team
-
 
 ## Education
 ---
