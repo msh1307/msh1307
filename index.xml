@@ -83,7 +83,7 @@ struct nftnl_expr_osf { enum nft_registers	dreg; uint8_t	ttl; uint32_t	flags; };
     </item>
     
     <item>
-      <title>Iris CTF 2024 - sqlite3 vm pwn</title>
+      <title>Iris CTF 2024</title>
       <link>https://msh1307.kr/blog/iris_ctf_2024/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
       
