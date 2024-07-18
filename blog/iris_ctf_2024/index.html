@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Iris CTF 2024 | msh1307</title>
+<title>Iris CTF 2024 - sqlite3 vm pwn | msh1307</title>
 <meta name="keywords" content="sqlite internals, sqlite exploit, sequilitis, Serious-banking">
 <meta name="description" content="DeadSec으로 참여했다. 당시엔 팀원분이 풀어주셔서 넘겼지만, sqlite3라 꼭 혼자 풀어보고싶었다.
 sequilitis SQL query를 만들고 실행시키는 프로그램이다.
@@ -67,7 +67,7 @@ gtag('config', 'G-BR89V2WEC0');
         }
 
     </style>
-</noscript><meta property="og:title" content="Iris CTF 2024" />
+</noscript><meta property="og:title" content="Iris CTF 2024 - sqlite3 vm pwn" />
 <meta property="og:description" content="DeadSec으로 참여했다. 당시엔 팀원분이 풀어주셔서 넘겼지만, sqlite3라 꼭 혼자 풀어보고싶었다.
 sequilitis SQL query를 만들고 실행시키는 프로그램이다.
 Analysis chal 여러 옵션이 존재한다. 먼저 sqlite3는 오픈소스이고 소스코드도 주어지기 때문에 일단 컴파일을 하고 구조체나 enum을 IDA로 import 했다. inscribe 옵션에서 sqlite3의 vm 코드를 수정할 수 있는 취약점이있다. 그리고 execute로 실행하고 나면 column type에 따라 값들이 리턴된다.
@@ -79,7 +79,7 @@ sqlite3 sqlite3의 vmcode들을 분석해야한다.
 <meta property="article:modified_time" content="2024-03-10T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Iris CTF 2024"/>
+<meta name="twitter:title" content="Iris CTF 2024 - sqlite3 vm pwn"/>
 <meta name="twitter:description" content="DeadSec으로 참여했다. 당시엔 팀원분이 풀어주셔서 넘겼지만, sqlite3라 꼭 혼자 풀어보고싶었다.
 sequilitis SQL query를 만들고 실행시키는 프로그램이다.
 Analysis chal 여러 옵션이 존재한다. 먼저 sqlite3는 오픈소스이고 소스코드도 주어지기 때문에 일단 컴파일을 하고 구조체나 enum을 IDA로 import 했다. inscribe 옵션에서 sqlite3의 vm 코드를 수정할 수 있는 취약점이있다. 그리고 execute로 실행하고 나면 column type에 따라 값들이 리턴된다.
@@ -101,7 +101,7 @@ sqlite3 sqlite3의 vmcode들을 분석해야한다.
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "Iris CTF 2024",
+      "name": "Iris CTF 2024 - sqlite3 vm pwn",
       "item": "https://msh1307.kr/blog/iris_ctf_2024/"
     }
   ]
@@ -111,14 +111,14 @@ sqlite3 sqlite3의 vmcode들을 분석해야한다.
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Iris CTF 2024",
-  "name": "Iris CTF 2024",
+  "headline": "Iris CTF 2024 - sqlite3 vm pwn",
+  "name": "Iris CTF 2024 - sqlite3 vm pwn",
   "description": "DeadSec으로 참여했다. 당시엔 팀원분이 풀어주셔서 넘겼지만, sqlite3라 꼭 혼자 풀어보고싶었다.\nsequilitis SQL query를 만들고 실행시키는 프로그램이다.\nAnalysis chal 여러 옵션이 존재한다. 먼저 sqlite3는 오픈소스이고 소스코드도 주어지기 때문에 일단 컴파일을 하고 구조체나 enum을 IDA로 import 했다. inscribe 옵션에서 sqlite3의 vm 코드를 수정할 수 있는 취약점이있다. 그리고 execute로 실행하고 나면 column type에 따라 값들이 리턴된다.\nsqlite3 sqlite3의 vmcode들을 분석해야한다.\n/* forward declaration */ static int sqlite3Prepare( sqlite3 *db, /* Database handle. */ const char *zSql, /* UTF-8 encoded SQL statement.",
   "keywords": [
     "sqlite internals", "sqlite exploit", "sequilitis", "Serious-banking"
   ],
   "articleBody": "DeadSec으로 참여했다. 당시엔 팀원분이 풀어주셔서 넘겼지만, sqlite3라 꼭 혼자 풀어보고싶었다.\nsequilitis SQL query를 만들고 실행시키는 프로그램이다.\nAnalysis chal 여러 옵션이 존재한다. 먼저 sqlite3는 오픈소스이고 소스코드도 주어지기 때문에 일단 컴파일을 하고 구조체나 enum을 IDA로 import 했다. inscribe 옵션에서 sqlite3의 vm 코드를 수정할 수 있는 취약점이있다. 그리고 execute로 실행하고 나면 column type에 따라 값들이 리턴된다.\nsqlite3 sqlite3의 vmcode들을 분석해야한다.\n/* forward declaration */ static int sqlite3Prepare( sqlite3 *db, /* Database handle. */ const char *zSql, /* UTF-8 encoded SQL statement. */ int nBytes, /* Length of zSql in bytes. */ u32 prepFlags, /* Zero or more SQLITE_PREPARE_* flags */ Vdbe *pReprepare, /* VM being reprepared */ sqlite3_stmt **ppStmt, /* OUT: A pointer to the prepared statement */ const char **pzTail /* OUT: End of parsed string */ ); sqlite3_prepare_v3는 내부적으로 Vdbe 라는 vm 구조체를 초기화하면서 바이트 코드들을 점화한다. 이는 내부적으로 호출되는 함수의 선언부만 봐도 알 수 있다.\nstruct Vdbe { sqlite3 *db; /* The database connection that owns this statement */ Vdbe **ppVPrev,*pVNext; /* Linked list of VDBEs with the same Vdbe.db */ Parse *pParse; /* Parsing context used to create this Vdbe */ ynVar nVar; /* Number of entries in aVar[] */ int nMem; /* Number of memory locations currently allocated */ int nCursor; /* Number of slots in apCsr[] */ u32 cacheCtr; /* VdbeCursor row cache generation counter */ int pc; /* The program counter */ int rc; /* Value to return */ i64 nChange; /* Number of db changes made since last reset */ int iStatement; /* Statement number (or 0 if has no opened stmt) */ i64 iCurrentTime; /* Value of julianday('now') for this statement */ i64 nFkConstraint; /* Number of imm. FK constraints this VM */ i64 nStmtDefCons; /* Number of def. constraints when stmt started */ i64 nStmtDefImmCons; /* Number of def. imm constraints when stmt started */ Mem *aMem; /* The memory locations */ Mem **apArg; /* Arguments to currently executing user function */ VdbeCursor **apCsr; /* One element of this array for each open cursor */ Mem *aVar; /* Values for the OP_Variable opcode. */ /* When allocating a new Vdbe object, all of the fields below should be ** initialized to zero or NULL */ Op *aOp; /* Space to hold the virtual machine's program */ int nOp; /* Number of instructions in the program */ int nOpAlloc; /* Slots allocated for aOp[] */ Mem *aColName; /* Column names to return */ Mem *pResultRow; /* Current output row */ char *zErrMsg; /* Error message written here */ VList *pVList; /* Name of variables */ #ifndef SQLITE_OMIT_TRACE i64 startTime; /* Time when query started - used for profiling */ #endif #ifdef SQLITE_DEBUG int rcApp; /* errcode set by sqlite3_result_error_code() */ u32 nWrite; /* Number of write operations that have occurred */ #endif u16 nResColumn; /* Number of columns in one row of the result set */ u16 nResAlloc; /* Column slots allocated to aColName[] */ u8 errorAction; /* Recovery action to do in case of an error */ u8 minWriteFileFormat; /* Minimum file format for writable database files */ u8 prepFlags; /* SQLITE_PREPARE_* flags */ 여기서 Op 구조체를 확인하면 다음과 같다.\nstruct VdbeOp { u8 opcode; /* What operation to perform */ signed char p4type; /* One of the P4_xxx constants for p4 */ u16 p5; /* Fifth parameter is an unsigned 16-bit integer */ int p1; /* First operand */ int p2; /* Second parameter (often the jump destination) */ int p3; /* The third parameter */ union p4union { /* fourth parameter */ int i; /* Integer value if p4type==P4_INT32 */ void *p; /* Generic pointer */ char *z; /* Pointer to data for string (char array) types */ i64 *pI64; /* Used when p4type is P4_INT64 */ double *pReal; /* Used when p4type is P4_REAL */ FuncDef *pFunc; /* Used when p4type is P4_FUNCDEF */ sqlite3_context *pCtx; /* Used when p4type is P4_FUNCCTX */ CollSeq *pColl; /* Used when p4type is P4_COLLSEQ */ Mem *pMem; /* Used when p4type is P4_MEM */ VTable *pVtab; /* Used when p4type is P4_VTAB */ KeyInfo *pKeyInfo; /* Used when p4type is P4_KEYINFO */ u32 *ai; /* Used when p4type is P4_INTARRAY */ SubProgram *pProgram; /* Used when p4type is P4_SUBPROGRAM */ Table *pTab; /* Used when p4type is P4_TABLE */ #ifdef SQLITE_ENABLE_CURSOR_HINTS Expr *pExpr; /* Used when p4type is P4_EXPR */ #endif } p4; #ifdef SQLITE_ENABLE_EXPLAIN_COMMENTS char *zComment; /* Comment to improve readability */ #endif #ifdef SQLITE_VDBE_COVERAGE u32 iSrcLine; /* Source-code line that generated this opcode ** with flags in the upper 8 bits */ #endif #if defined(SQLITE_ENABLE_STMT_SCANSTATUS) || defined(VDBE_PROFILE) u64 nExec; u64 nCycle; #endif }; typedef struct VdbeOp VdbeOp; 분석 속도를 높히기 위해서 앞서 분석한 내용을 토대로 Ops를 dump하는 스크립트를 작성했다.\ndump_ops.py v= '''OP_Savepoint = 0# OP_AutoCommit = 1# OP_Transaction = 2# OP_Checkpoint = 3# OP_JournalMode = 4# OP_Vacuum = 5# OP_VFilter = 6# /* jump, synopsis: iplan=r[P3] zplan='P4' */ OP_VUpdate = 7# /* synopsis: data=r[P3@P2] */ OP_Init = 8# /* jump, synopsis: Start at P2 */ OP_Goto = 9# /* jump */ OP_Gosub = 10# /* jump */ OP_InitCoroutine = 11# /* jump */ OP_Yield = 12# /* jump */ OP_MustBeInt = 13# /* jump */ OP_Jump = 14# /* jump */ OP_Once = 15# /* jump */ OP_If = 16# /* jump */ OP_IfNot = 17# /* jump */ OP_IsType = 18# /* jump, synopsis: if typeof(P1.P3) in P5 goto P2 */ OP_Not = 19# /* same as TK_NOT, synopsis: r[P2]= !r[P1] */ OP_IfNullRow = 20# /* jump, synopsis: if P1.nullRow then r[P3]=NULL, goto P2 */ OP_SeekLT = 21# /* jump, synopsis: key=r[P3@P4] */ OP_SeekLE = 22# /* jump, synopsis: key=r[P3@P4] */ OP_SeekGE = 23# /* jump, synopsis: key=r[P3@P4] */ OP_SeekGT = 24# /* jump, synopsis: key=r[P3@P4] */ OP_IfNotOpen = 25# /* jump, synopsis: if( !csr[P1] ) goto P2 */ OP_IfNoHope = 26# /* jump, synopsis: key=r[P3@P4] */ OP_NoConflict = 27# /* jump, synopsis: key=r[P3@P4] */ OP_NotFound = 28# /* jump, synopsis: key=r[P3@P4] */ OP_Found = 29# /* jump, synopsis: key=r[P3@P4] */ OP_SeekRowid = 30# /* jump, synopsis: intkey=r[P3] */ OP_NotExists = 31# /* jump, synopsis: intkey=r[P3] */ OP_Last = 32# /* jump */ OP_IfSmaller = 33# /* jump */ OP_SorterSort = 34# /* jump */ OP_Sort = 35# /* jump */ OP_Rewind = 36# /* jump */ OP_SorterNext = 37# /* jump */ OP_Prev = 38# /* jump */ OP_Next = 39# /* jump */ OP_IdxLE = 40# /* jump, synopsis: key=r[P3@P4] */ OP_IdxGT = 41# /* jump, synopsis: key=r[P3@P4] */ OP_IdxLT = 42# /* jump, synopsis: key=r[P3@P4] */ OP_Or = 43# /* same as TK_OR, synopsis: r[P3]=(r[P1] || r[P2]) */ OP_And = 44# /* same as TK_AND, synopsis: r[P3]=(r[P1] \u0026\u0026 r[P2]) */ OP_IdxGE = 45# /* jump, synopsis: key=r[P3@P4] */ OP_RowSetRead = 46# /* jump, synopsis: r[P3]=rowset(P1) */ OP_RowSetTest = 47# /* jump, synopsis: if r[P3] in rowset(P1) goto P2 */ OP_Program = 48# /* jump */ OP_FkIfZero = 49# /* jump, synopsis: if fkctr[P1]==0 goto P2 */ OP_IsNull = 50# /* jump, same as TK_ISNULL, synopsis: if r[P1]==NULL goto P2 */ OP_NotNull = 51# /* jump, same as TK_NOTNULL, synopsis: if r[P1]!=NULL goto P2 */ OP_Ne = 52# /* jump, same as TK_NE, synopsis: IF r[P3]!=r[P1] */ OP_Eq = 53# /* jump, same as TK_EQ, synopsis: IF r[P3]==r[P1] */ OP_Gt = 54# /* jump, same as TK_GT, synopsis: IF r[P3]\u003er[P1] */ OP_Le = 55# /* jump, same as TK_LE, synopsis: IF r[P3]\u003c=r[P1] */ OP_Lt = 56# /* jump, same as TK_LT, synopsis: IF r[P3]",
-  "wordCount" : "6634",
+  "wordCount" : "6632",
   "inLanguage": "en",
   "datePublished": "2024-03-10T00:00:00Z",
   "dateModified": "2024-03-10T00:00:00Z",
@@ -225,7 +225,7 @@ sqlite3 sqlite3의 vmcode들을 분석해야한다.
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://msh1307.kr">Home</a>&nbsp;»&nbsp;<a href="https://msh1307.kr/blog/">Blogs</a></div>
     <h1 class="post-title">
-      Iris CTF 2024
+      Iris CTF 2024 - sqlite3 vm pwn
     </h1>
     <div class="post-meta">
 
@@ -624,8 +624,7 @@ inscribe 옵션에서 sqlite3의 vm 코드를 수정할 수 있는 취약점이�
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> mem[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">70</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
 </span></span></code></pre></div><p>위 스크립트를 이용해서 몇가지 SQL에 대한 바이트 코드가 어떻게 점화되는지 확인했다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&#39;&#39;&#39;</span>
-</span></span><span style="display:flex;"><span>SELECT <span style="color:#ae81ff">0x1234</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>SELECT <span style="color:#ae81ff">0x1234</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>gef<span style="color:#f92672">&gt;</span> source dump_ops.py 
 </span></span><span style="display:flex;"><span>{
@@ -664,7 +663,6 @@ inscribe 옵션에서 sqlite3의 vm 코드를 수정할 수 있는 취약점이�
 </span></span><span style="display:flex;"><span>        p2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x0</span>
 </span></span><span style="display:flex;"><span>        p3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x0</span>
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&#39;&#39;&#39;</span>
 </span></span></code></pre></div><p>OP_Init은 초기화 작업을 해주고 p2에 저장된 entrypoint로 뛰어주는 역할을 한다.
 그리고 OP_ResultRow로 ResultRow를 지정한다.
 마지막으로 OP_Halt로 vm 프로그램을 종료한다.</p>

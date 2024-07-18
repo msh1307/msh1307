@@ -39,7 +39,7 @@ class kowaiiCtx { private: void *genAddr() { u64 r = 0; do r = (u64)rand(); whil
     </item>
     
     <item>
-      <title>Iris CTF 2024</title>
+      <title>Iris CTF 2024 - sqlite3 vm pwn</title>
       <link>https://msh1307.kr/blog/iris_ctf_2024/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
       
