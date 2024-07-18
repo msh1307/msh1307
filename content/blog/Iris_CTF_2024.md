@@ -1,5 +1,5 @@
 ---
-title: "Iris CTF 2024"
+title: "Iris CTF 2024 - sqlite3 vm pwn"
 dateString: March 2024
 draft: false
 tags: ["sqlite internals","sqlite exploit","sequilitis","Serious-banking"]
@@ -352,7 +352,6 @@ while True:
 ```
 위 스크립트를 이용해서 몇가지 SQL에 대한 바이트 코드가 어떻게 점화되는지 확인했다.
 ```c
-'''
 SELECT 0x1234
 
 gef> source dump_ops.py 
@@ -392,7 +391,6 @@ gef> source dump_ops.py
         p2 = 0x0
         p3 = 0x0
 }
-'''
 ```
 OP_Init은 초기화 작업을 해주고 p2에 저장된 entrypoint로 뛰어주는 역할을 한다.
 그리고 OP_ResultRow로 ResultRow를 지정한다.
