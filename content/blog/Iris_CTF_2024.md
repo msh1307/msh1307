@@ -1,5 +1,5 @@
 ---
-title: "Iris CTF 2024 - sqlite3 vm pwn"
+title: "Iris CTF 2024"
 dateString: March 2024
 draft: false
 tags: ["sqlite internals","sqlite exploit","sequilitis","Serious-banking"]
