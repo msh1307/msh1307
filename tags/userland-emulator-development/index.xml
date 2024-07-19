@@ -8,11 +8,11 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 19 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/tags/userland-emulator-development/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Router firmware extraction &amp; emulator</title>
-      <link>https://msh1307.kr/blog/router-firmware-extraction-emulator/</link>
+      <title>Router firmware extraction &amp; ld based emulator development</title>
+      <link>https://msh1307.kr/blog/router_firmware_extraction_emulator_dev/</link>
       <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://msh1307.kr/blog/router-firmware-extraction-emulator/</guid>
+      <guid>https://msh1307.kr/blog/router_firmware_extraction_emulator_dev/</guid>
       <description>계기 이번년도 초에 BoB 교육기간중에 갑자기 흥미가 생겨서 친구의 고물 라우터를 빼았았고 센터 뒤에서 무작정 UART에 땜질을 시작했다. 할 수 있다고 억지부리다가 부숴먹고 오기가 생겨서 더 하다가 또 부숴먹고 하나 또 구매했다.
 멸망 당연하지만 알리산 3천원 땜질기로는 제대로된 땜질을 할 수 없었고 땜질 초보인 이걸로 열심히 기판을 지지다 망가뜨렸다. 알리에서 열풍기를 포함한 땜질 키트와 방진 마스크를 사서 다시 시도했다. 열풍기 써보려고 테스트하다 또 하나 더 부숴먹고 조심히 다시 시작했다.
 구원 쿠팡에서 제일 위에 떠있는 라우터를 사왔다.</description>
