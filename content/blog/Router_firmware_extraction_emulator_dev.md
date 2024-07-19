@@ -16,7 +16,7 @@ categories: ["ETC"]
 ![](/blog/Router_firmware_extraction_emulator_dev/d8bb4b2a9229554347eb2855afa1ecc8.webp)
 ![](/blog/Router_firmware_extraction_emulator_dev/a87975743866efe4d20be0d6a6aa54d1.webp)
 ![](/blog/Router_firmware_extraction_emulator_dev/3effc797338abcfb5cb7fdba34942b56.png)
-당연하지만 알리산 3천원 땜질기로는 제대로된 땜질을 할 수 없었고 땜질 초보인 이걸로 열심히 기판을 지지다 망가뜨렸다.
+당연하지만 알리산 3천원 땜질기로는 제대로된 땜질을 할 수 없었고 이걸로 열심히 기판을 지지다 망가뜨렸다.
 알리에서 열풍기를 포함한 땜질 키트와 방진 마스크를 사서 다시 시도했다.
 열풍기 써보려고 테스트하다 또 하나 더 부숴먹고 조심히 다시 시작했다.
 # 구원
