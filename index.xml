@@ -6,15 +6,16 @@
     <description>Recent content on msh1307</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>HITCON CTF 2018 - SuperHexagon</title>
-      <link>https://msh1307.kr/blog/hitcon_2018_superhexagon/</link>
-      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      <title>Router firmware extraction &amp; emulator</title>
+      <link>https://msh1307.kr/blog/router-firmware-extraction-emulator/</link>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://msh1307.kr/blog/hitcon_2018_superhexagon/</guid>
-      <description>오랜만에 한꺼번에 블로그 글을 쓰게 되었다. 이번년도 초에 공부를 목적으로 superhexagon을 풀었다. 글에서 언급하는 background 내용은 다른 글에서 따로 정리되어있다.
-Overview diff -Naur &amp;#39;--exclude=tests&amp;#39; &amp;#39;--exclude=roms&amp;#39; &amp;#39;--exclude=capstone&amp;#39; &amp;#39;--exclude=docs&amp;#39; ../temp/qemu-3.0.0/hw/arm/hitcon.c qemu/hw/arm/hitcon.c --- ../temp/qemu-3.0.0/hw/arm/hitcon.c	1969-12-31 16:00:00.000000000 -0800 +++ qemu/hw/arm/hitcon.c	2018-10-19 10:49:59.412023642 -0700 @@ -0,0 +1,208 @@ +#include &amp;#34;qemu/osdep.h&amp;#34; +#include &amp;#34;qapi/error.h&amp;#34; +#include &amp;#34;qemu-common.h&amp;#34; +#include &amp;#34;cpu.h&amp;#34; +#include &amp;#34;hw/sysbus.h&amp;#34; +#include &amp;#34;hw/devices.h&amp;#34; +#include &amp;#34;hw/boards.h&amp;#34; +#include &amp;#34;hw/arm/arm.h&amp;#34; +#include &amp;#34;hw/misc/arm_integrator_debug.h&amp;#34; +#include &amp;#34;net/net.h&amp;#34; +#include &amp;#34;exec/address-spaces.h&amp;#34; +#include &amp;#34;sysemu/sysemu.h&amp;#34; +#include &amp;#34;qemu/error-report.h&amp;#34; +#include &amp;#34;hw/char/pl011.</description>
+      <guid>https://msh1307.kr/blog/router-firmware-extraction-emulator/</guid>
+      <description>계기 이번년도 초에 BoB 교육기간중에 갑자기 흥미가 생겨서 친구의 고물 라우터를 빼았았고 센터 뒤에서 무작정 UART에 땜질을 시작했다. 할 수 있다고 억지부리다가 부숴먹고 오기가 생겨서 더 하다가 또 부숴먹고 하나 또 구매했다.
+멸망 당연하지만 알리산 3천원 땜질기로는 제대로된 땜질을 할 수 없었고 땜질 초보인 이걸로 열심히 기판을 지지다 망가뜨렸다. 알리에서 열풍기를 포함한 땜질 키트와 방진 마스크를 사서 다시 시도했다. 열풍기 써보려고 테스트하다 또 하나 더 부숴먹고 조심히 다시 시작했다.
+구원 쿠팡에서 제일 위에 떠있는 라우터를 사왔다.</description>
     </item>
     
     <item>
@@ -37,6 +38,16 @@ Armv8의 중요한 특징은 호환성이다.
       <guid>https://msh1307.kr/blog/google_ctf_2024_unicornel/</guid>
       <description>UNICORNEL Cold Fusion 연합팀으로 Google ctf에 참여했다. 늦잠자서 늦게 합류했는데, 이미 팀원분이 취약점을 찾아놓으셔서 어떻게 악용할지를 중점적으로 생각하고 익스플로잇을 작성해서 챌린지를 해결했다.
 Analysis ==== About ==== Unicornel is a multi-process, multi-architecture emulator server with concurrency and system call support. All processes of any architecture share the underlying kernel, and can interact with each other via system calls and in particular a lightweight shared memory interface. ==== Starting processes ==== In order to start a new process, you must first send a unicornelf header, which naturally bears no resemblance whatsoever to the actual ELF standard: struct unicornelf { uc_arch arch; //Desired unicorn-supported ISA uc_mode mode; //Desired unicorn-supported mode struct { unsigned long va; //Virtual address to map unsigned long length; //Length of memory to map } maps[4]; //Up to 4 mappings supported unsigned short code_length; //The length of the code to follow the unicornelf header unsigned char num_maps; //The number of mappings initialized in the maps array }; Following the unicornelf header should be &amp;lt;code length&amp;gt; bytes of assembled machine code in the specified instruction set architecture.</description>
+    </item>
+    
+    <item>
+      <title>HITCON CTF 2018 - SuperHexagon</title>
+      <link>https://msh1307.kr/blog/hitcon_2018_superhexagon/</link>
+      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://msh1307.kr/blog/hitcon_2018_superhexagon/</guid>
+      <description>오랜만에 한꺼번에 블로그 글을 쓰게 되었다. 이번년도 초에 Theori에서 과제로 superhexagon을 풀면서 관련 CS를 한달간 공부해오는 것을 과제로 받았다. 글에서 언급하는 background 내용은 다른 글에서 따로 정리되어있다.
+Overview diff -Naur &amp;#39;--exclude=tests&amp;#39; &amp;#39;--exclude=roms&amp;#39; &amp;#39;--exclude=capstone&amp;#39; &amp;#39;--exclude=docs&amp;#39; ../temp/qemu-3.0.0/hw/arm/hitcon.c qemu/hw/arm/hitcon.c --- ../temp/qemu-3.0.0/hw/arm/hitcon.c	1969-12-31 16:00:00.000000000 -0800 +++ qemu/hw/arm/hitcon.c	2018-10-19 10:49:59.412023642 -0700 @@ -0,0 +1,208 @@ +#include &amp;#34;qemu/osdep.h&amp;#34; +#include &amp;#34;qapi/error.h&amp;#34; +#include &amp;#34;qemu-common.h&amp;#34; +#include &amp;#34;cpu.h&amp;#34; +#include &amp;#34;hw/sysbus.h&amp;#34; +#include &amp;#34;hw/devices.h&amp;#34; +#include &amp;#34;hw/boards.h&amp;#34; +#include &amp;#34;hw/arm/arm.h&amp;#34; +#include &amp;#34;hw/misc/arm_integrator_debug.h&amp;#34; +#include &amp;#34;net/net.h&amp;#34; +#include &amp;#34;exec/address-spaces.</description>
     </item>
     
     <item>
