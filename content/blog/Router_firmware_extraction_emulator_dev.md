@@ -13,18 +13,18 @@ categories: ["ETC"]
 이번년도 초에 BoB 교육기간중에 갑자기 흥미가 생겨서 친구의 고물 라우터를 빼았았고 센터 뒤에서 무작정 UART에 땜질을 시작했다.
 할 수 있다고 억지부리다가 부숴먹고 오기가 생겨서 더 하다가 또 부숴먹고 하나 또 구매했다.
 # 멸망
-![](/Router_firmware_extraction_emulator_dev/d8bb4b2a9229554347eb2855afa1ecc8.webp)
-![](/Router_firmware_extraction_emulator_dev/a87975743866efe4d20be0d6a6aa54d1.webp)
-![](/Router_firmware_extraction_emulator_dev/3effc797338abcfb5cb7fdba34942b56.png)
+![](/blog/Router_firmware_extraction_emulator_dev/d8bb4b2a9229554347eb2855afa1ecc8.webp)
+![](/blog/Router_firmware_extraction_emulator_dev/a87975743866efe4d20be0d6a6aa54d1.webp)
+![](/blog/Router_firmware_extraction_emulator_dev/3effc797338abcfb5cb7fdba34942b56.png)
 당연하지만 알리산 3천원 땜질기로는 제대로된 땜질을 할 수 없었고 땜질 초보인 이걸로 열심히 기판을 지지다 망가뜨렸다.
 알리에서 열풍기를 포함한 땜질 키트와 방진 마스크를 사서 다시 시도했다.
 열풍기 써보려고 테스트하다 또 하나 더 부숴먹고 조심히 다시 시작했다.
 # 구원
-![](/Router_firmware_extraction_emulator_dev/36a5a9b73016b9694c59a209fde8feda.png)
+![](/blog/Router_firmware_extraction_emulator_dev/36a5a9b73016b9694c59a209fde8feda.png)
 쿠팡에서 제일 위에 떠있는 라우터를 사왔다.
 제일 기본적으로 디버깅 인터페이스부터 찾으려고 했다.
 JTAG나 UART가 어디 없나 찾던중 UART를 찾은것 같았다.
-![](/Router_firmware_extraction_emulator_dev/e70dfc9eea62e071b233c4089fb3a392.png)
+![](/blog/Router_firmware_extraction_emulator_dev/e70dfc9eea62e071b233c4089fb3a392.png)
 앞서 부숴먹은 라우터들의 경험을 바탕으로 열풍기를 잘 이용해가면서 USB to TTL을 손수 땜질을 했고, 시리얼 포트로 접속했다.
 baudrate를 맞춰야해서 인터넷에서 자주 사용되는 baudrate를 하나 하나 손수 넣어보면서 제대로된 출력이 나올때까지 기다렸다.
 ```
@@ -94,19 +94,19 @@ Do MDIO_RESET
 ```
 bootshell이 뜰거란 행복회로를 돌렸지만 어림도 없었고 일종의 매직키가 있나 싶어서 serial 포트에 연결해서 매직키 알려진 것들을 자동으로 막 보내는 스크립트도 열심히 작성했지만 아무것도 동작하지 않았다.
 ### SPI Dump
-![](/Router_firmware_extraction_emulator_dev/4e088581b3296acb9912b15270212d27.png)
+![](/blog/Router_firmware_extraction_emulator_dev/4e088581b3296acb9912b15270212d27.png)
 이렇게 연결된다고 한다.
 MISO, MOSI가 데이터 보내고 받는 핀이니 저렇게 연결했다.
-![](/Router_firmware_extraction_emulator_dev/5b0ba90f9fd2ef722bf278f42e95e876.png)
+![](/blog/Router_firmware_extraction_emulator_dev/5b0ba90f9fd2ef722bf278f42e95e876.png)
 SPI flash를 읽는건 라즈베리파이에서도 지원하길래 데이터시트를 검색해서 그거대로 연결했다. 
-![](/Router_firmware_extraction_emulator_dev/44c564a1bb5ae4d41d9b842ca6efe50c.png)
-![](/Router_firmware_extraction_emulator_dev/7bfdf2b060a86a0a8a7c8993375c8bfc.png)
+![](/blog/Router_firmware_extraction_emulator_dev/44c564a1bb5ae4d41d9b842ca6efe50c.png)
+![](/blog/Router_firmware_extraction_emulator_dev/7bfdf2b060a86a0a8a7c8993375c8bfc.png)
 되었다가 안되었다가해서 핀을 계속 다시 연결했다.
-![](/Router_firmware_extraction_emulator_dev/26082494eb9adc301dbc0a1a8e0bd275.png)
-![](/Router_firmware_extraction_emulator_dev/e3a2e8caa6076bf934e6d81fa881f24a.png)
+![](/blog/Router_firmware_extraction_emulator_dev/26082494eb9adc301dbc0a1a8e0bd275.png)
+![](/blog/Router_firmware_extraction_emulator_dev/e3a2e8caa6076bf934e6d81fa881f24a.png)
 이대로 파이썬으로 간단하게 코드를 구현했지만 어림도 없었다.
-![](/Router_firmware_extraction_emulator_dev/07fe2c98611ae96416621e7fefec411a.png)
-![](/Router_firmware_extraction_emulator_dev/2e20026b1ecb5d27ebcce38fddbb1e4b.png)
+![](/blog/Router_firmware_extraction_emulator_dev/07fe2c98611ae96416621e7fefec411a.png)
+![](/blog/Router_firmware_extraction_emulator_dev/2e20026b1ecb5d27ebcce38fddbb1e4b.png)
 그래서 다시 차근 차근 데이터시트를 읽어보고 실제로 세팅하지 않아도 되는 핀들이나 세팅해야하는 핀들을 세팅했다.
 
 예제 코드들 구글링하던 도중 default CE chip enable하고 읽는 코드도 있길래 그러고 읽어도 어떨때는 제대로 읽혔다.
@@ -214,11 +214,11 @@ dump('./linux_bank2',0x000000b40000,0x000000b40000-0x000000800000)
 spi.close()
 ```
 
-![](/Router_firmware_extraction_emulator_dev/e7731d6c059a102555df55e83ba62741.png)
-![](/Router_firmware_extraction_emulator_dev/6039d0d9e42313d4b9de13f8b6bf4901.png)
-![](/Router_firmware_extraction_emulator_dev/992f148f2cc93b03e6f7d9b45a8cfe4b.png)
+![](/blog/Router_firmware_extraction_emulator_dev/e7731d6c059a102555df55e83ba62741.png)
+![](/blog/Router_firmware_extraction_emulator_dev/6039d0d9e42313d4b9de13f8b6bf4901.png)
+![](/blog/Router_firmware_extraction_emulator_dev/992f148f2cc93b03e6f7d9b45a8cfe4b.png)
 그래서 열심히 맵을 보고 같은 영역을 5번 정도씩 읽고 md5를 비교해서 같은 md5를 가진 파일들로 걸러냈다.
-![](/Router_firmware_extraction_emulator_dev/2b0a37deed96345530a1b730b6b40187.png)
+![](/blog/Router_firmware_extraction_emulator_dev/2b0a37deed96345530a1b730b6b40187.png)
 init script를 분석해봤는데 cgi 바이너리를 돌리는 것을 확인했고 테스트를 해보려는데 생소한 라이브러리를 사용해서 qemu로 에뮬레이션하는데 실패했다.
 그래서서 뭔가 나중에 에뮬레이터 하나 만들어서 이거 돌려보면 재밌을것 같아서 미뤄두고 까먹고 있었다.
 # Emulator 개발
