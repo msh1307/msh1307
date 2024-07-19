@@ -3,7 +3,7 @@ title: "HITCON CTF 2018 - SuperHexagon"
 dateString: June 2024
 draft: false
 tags: ["HITCON 2018 SuperHexagon","Hypervisor Exploit", "Kernel Exploit", "Secure Monitor Exploit"]
-weight: 10
+weight: 30
 date: 2024-06-25
 categories: ["CTF"]
 # cover:
@@ -11,7 +11,7 @@ categories: ["CTF"]
 ---
 
 오랜만에 한꺼번에 블로그 글을 쓰게 되었다.
-이번년도 초에 공부를 목적으로 superhexagon을 풀었다.
+이번년도 초에 Theori에서 과제로 superhexagon을 풀면서 관련 CS를 한달간 공부해오는 것을 과제로 받았다.
 글에서 언급하는 background 내용은 다른 글에서 따로 정리되어있다.
 
 # Overview
