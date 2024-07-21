@@ -1,5 +1,5 @@
 ---
-title: "Bi0s CTF 2024 - KowaiVM"
+title: "Bi0s CTF 2024 - KowaiiVM"
 dateString: March 2024
 draft: false
 tags: ["Bi0s CTF 2024","JIT Exploit"]
