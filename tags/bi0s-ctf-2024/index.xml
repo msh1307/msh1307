@@ -8,11 +8,11 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://msh1307.kr/tags/bi0s-ctf-2024/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Bi0s CTF 2024 - KowaiVM</title>
-      <link>https://msh1307.kr/blog/bi0s_ctf_2024_kowaivm/</link>
+      <title>Bi0s CTF 2024 - KowaiiVM</title>
+      <link>https://msh1307.kr/blog/bi0s_ctf_2024_kowaiivm/</link>
       <pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://msh1307.kr/blog/bi0s_ctf_2024_kowaivm/</guid>
+      <guid>https://msh1307.kr/blog/bi0s_ctf_2024_kowaiivm/</guid>
       <description>Kowaii VM Analysis 문제에서 소스코드를 제공해준다.
 ---- 0x0000 Header data ---- 0x1000 .CODE ---- bss &amp;gt;= 0xc000 .BSS ---- 0xffff 위와 같은 바이너리 구조를 입력으로 받는다.
 class kowaiiCtx { private: void *genAddr() { u64 r = 0; do r = (u64)rand(); while((int)r &amp;lt; 0); return (void *)(r &amp;lt;&amp;lt; 12); } public: kowaiiBin *bin; kowaiiRegisters *regs; kowaiiFuncEntry **callStack; kowaiiFuncEntry **callStackBase; u8 *bss; u8 *jitBase; u8 *jitEnd; kowaiiCtx() { this-&amp;gt;bin = (kowaiiBin *)mmap(this-&amp;gt;genAddr(), MAX_BIN_SIZE, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0); this-&amp;gt;regs = (kowaiiRegisters *)calloc(1,sizeof(kowaiiRegisters)); if(this-&amp;gt;bin == (void *)-1 || this-&amp;gt;regs == NULL) error(&amp;#34;Memory error!</description>
