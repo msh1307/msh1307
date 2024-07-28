@@ -22,6 +22,7 @@ showToc: false
 - 선린인터넷고등학교 SW 영재원 (2021.04 ~ 2021.11)
 - 현대오토에버 화이트해커 양성교육 (2022.07 ~ 2022.11)
 - KITRI BoB 12th Vulnerability Analysis (2023.07 ~ 2024.03)
+- Theori Security Researcher Intern (2024.07 ~ )
 
 ## CTF & Award
 ---
